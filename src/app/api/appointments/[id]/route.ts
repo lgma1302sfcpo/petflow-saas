@@ -1,0 +1,6 @@
+import { z } from "zod";
+import { apiError,getApiContext } from "@/lib/api-context";
+import { PERMISSIONS } from "@/lib/permissions";
+import { prisma } from "@/lib/prisma";
+const schema=z.object({status:z.enum(["SCHEDULED","CONFIRMED","IN_SERVICE","COMPLETED","CANCELLED","NO_SHOW","BLOCKED"]),reason:z.string().trim().min(3).max(300)});
+export async function PATCH(request:Request,context:RouteContext<"/api/appointments/[id]">){try{const {tenantId,branchId,userId}=await getApiContext(PERMISSIONS.GROOMING_MANAGE,"grooming");const {id}=await context.params;const parsed=schema.safeParse(await request.json());if(!parsed.success)return Response.json({error:"Status e motivo são obrigatórios."},{status:422});if(!await prisma.appointment.findFirst({where:{id,tenantId,branchId}}))return Response.json({error:"Atendimento não encontrado."},{status:404});const appointment=await prisma.$transaction(async tx=>{const updated=await tx.appointment.update({where:{id},data:{status:parsed.data.status}});await tx.auditLog.create({data:{actorType:"TENANT",tenantId,branchId,userId,action:"appointment.status",entity:"Appointment",entityId:id,reason:parsed.data.reason,metadata:{status:parsed.data.status}}});return updated});return Response.json({appointment})}catch(error){return apiError(error)}}

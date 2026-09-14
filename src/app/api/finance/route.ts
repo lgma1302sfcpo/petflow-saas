@@ -1,0 +1,11 @@
+import { apiError,getApiContext } from "@/lib/api-context";
+import { money } from "@/lib/money";
+import { PERMISSIONS } from "@/lib/permissions";
+import { prisma } from "@/lib/prisma";
+import { financialEntryInput } from "@/modules/commerce/schemas";
+import { z } from "zod";
+
+const createSchema=financialEntryInput.extend({repeatMonths:z.coerce.number().int().min(1).max(60).default(1)});
+
+export async function GET(request:Request){try{const {tenantId,branchId}=await getApiContext(PERMISSIONS.FINANCE_VIEW,"finance");const params=new URL(request.url).searchParams;const from=params.get("from")?new Date(params.get("from")!):undefined;const to=params.get("to")?new Date(params.get("to")!):undefined;const entries=await prisma.financialEntry.findMany({where:{tenantId,branchId,dueDate:{gte:from,lte:to}},orderBy:{dueDate:"asc"},take:200});return Response.json({entries})}catch(error){return apiError(error)}}
+export async function POST(request:Request){try{const {tenantId,branchId,userId}=await getApiContext(PERMISSIONS.FINANCE_VIEW,"finance");const parsed=createSchema.safeParse(await request.json());if(!parsed.success)return Response.json({error:"Lançamento inválido.",fields:parsed.error.flatten().fieldErrors},{status:422});if(parsed.data.categoryId&&!await prisma.financialCategory.findFirst({where:{id:parsed.data.categoryId,tenantId}}))return Response.json({error:"Categoria inválida."},{status:403});const {repeatMonths,...data}=parsed.data;const entries=await prisma.$transaction(async tx=>{const created=[];for(let index=0;index<repeatMonths;index++){const dueDate=new Date(data.dueDate);dueDate.setMonth(dueDate.getMonth()+index);created.push(await tx.financialEntry.create({data:{tenantId,branchId,createdById:userId,...data,dueDate,description:repeatMonths>1?`${data.description} (${index+1}/${repeatMonths})`:data.description,amount:money(data.amount)}}))}await tx.auditLog.create({data:{actorType:"TENANT",tenantId,branchId,userId,action:"finance.entry.create",entity:"FinancialEntry",entityId:created[0].id,metadata:{repeatMonths,entryIds:created.map(entry=>entry.id)}}});return created});return Response.json({entry:entries[0],entries},{status:201})}catch(error){return apiError(error)}}

@@ -1,0 +1,642 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum TenantStatus {
+  TRIAL
+  ACTIVE
+  SUSPENDED
+  CANCELLED
+}
+
+enum UserStatus {
+  ACTIVE
+  INACTIVE
+  LOCKED
+}
+
+enum SubscriptionStatus {
+  TRIAL
+  ACTIVE
+  PAST_DUE
+  SUSPENDED
+  CANCELLED
+}
+
+enum AuditActorType {
+  PLATFORM
+  TENANT
+  SYSTEM
+}
+
+enum StockMovementType {
+  ENTRY
+  EXIT
+  ADJUSTMENT
+  INVENTORY
+  TRANSFER_IN
+  TRANSFER_OUT
+  SALE
+  SALE_CANCELLATION
+}
+
+enum SaleStatus {
+  COMPLETED
+  CANCELLED
+}
+
+enum CashSessionStatus {
+  OPEN
+  CLOSED
+  REOPENED
+}
+
+enum CashMovementType {
+  OPENING
+  SUPPLY
+  WITHDRAWAL
+  CLOSING
+}
+
+enum FinancialEntryType {
+  PAYABLE
+  RECEIVABLE
+}
+
+enum FinancialEntryStatus {
+  OPEN
+  PAID
+  CANCELLED
+}
+
+enum AppointmentStatus {
+  SCHEDULED
+  CONFIRMED
+  IN_SERVICE
+  COMPLETED
+  CANCELLED
+  NO_SHOW
+  BLOCKED
+}
+
+enum ImportStatus {
+  PREVIEW
+  PROCESSING
+  COMPLETED
+  COMPLETED_WITH_ERRORS
+  FAILED
+}
+
+enum FiscalEnvironment {
+  HOMOLOGATION
+  PRODUCTION
+}
+
+model PlatformUser {
+  id           String     @id @default(cuid())
+  name         String
+  username     String     @unique
+  passwordHash String
+  active       Boolean    @default(true)
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  auditLogs    AuditLog[]
+}
+
+model Plan {
+  id              String         @id @default(cuid())
+  name            String         @unique
+  slug            String         @unique
+  description     String?
+  maxBranches     Int
+  maxUsers        Int
+  enabledModules  String[]
+  enabledFeatures String[]
+  active          Boolean        @default(true)
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+  subscriptions   Subscription[]
+}
+
+model Tenant {
+  id                    String                 @id @default(cuid())
+  name                  String
+  slug                  String                 @unique
+  document              String?                @unique
+  status                TenantStatus           @default(TRIAL)
+  timezone              String                 @default("America/Sao_Paulo")
+  currency              String                 @default("BRL")
+  trialEndsAt           DateTime?
+  suspendedAt           DateTime?
+  cancelledAt           DateTime?
+  createdAt             DateTime               @default(now())
+  updatedAt             DateTime               @updatedAt
+  branches              Branch[]
+  users                 User[]
+  roles                 Role[]
+  settings              TenantSetting?
+  moduleOverrides       TenantModule[]
+  subscriptions         Subscription[]
+  auditLogs             AuditLog[]
+  impersonationSessions ImpersonationSession[]
+}
+
+model Subscription {
+  id               String             @id @default(cuid())
+  tenantId         String
+  planId           String
+  status           SubscriptionStatus @default(TRIAL)
+  startsAt         DateTime           @default(now())
+  trialEndsAt      DateTime?
+  currentPeriodEnd DateTime?
+  cancelledAt      DateTime?
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+  tenant           Tenant             @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+  plan             Plan               @relation(fields: [planId], references: [id], onDelete: Restrict)
+
+  @@index([tenantId, status])
+}
+
+model Branch {
+  id        String         @id @default(cuid())
+  tenantId  String
+  name      String
+  code      String
+  active    Boolean        @default(true)
+  timezone  String?
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
+  deletedAt DateTime?
+  tenant    Tenant         @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+  users     UserBranch[]
+  settings  BranchSetting?
+  auditLogs AuditLog[]
+
+  @@unique([tenantId, code])
+  @@unique([tenantId, id])
+  @@index([tenantId, active])
+}
+
+model User {
+  id             String       @id @default(cuid())
+  tenantId       String
+  roleId         String
+  name           String
+  username       String
+  email          String?
+  passwordHash   String
+  status         UserStatus   @default(ACTIVE)
+  failedAttempts Int          @default(0)
+  lockedUntil    DateTime?
+  lastLoginAt    DateTime?
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  deletedAt      DateTime?
+  tenant         Tenant       @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+  role           Role         @relation(fields: [tenantId, roleId], references: [tenantId, id], onDelete: Restrict)
+  branches       UserBranch[]
+  auditLogs      AuditLog[]
+
+  @@unique([tenantId, username])
+  @@unique([tenantId, id])
+  @@index([tenantId, status])
+}
+
+model UserBranch {
+  tenantId String
+  userId   String
+  branchId String
+  user     User   @relation(fields: [tenantId, userId], references: [tenantId, id], onDelete: Cascade)
+  branch   Branch @relation(fields: [tenantId, branchId], references: [tenantId, id], onDelete: Cascade)
+
+  @@id([userId, branchId])
+  @@index([tenantId, branchId])
+}
+
+model Role {
+  id          String           @id @default(cuid())
+  tenantId    String
+  name        String
+  description String?
+  system      Boolean          @default(false)
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+  tenant      Tenant           @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+  users       User[]
+  permissions RolePermission[]
+
+  @@unique([tenantId, name])
+  @@unique([tenantId, id])
+}
+
+model Permission {
+  id          String           @id @default(cuid())
+  key         String           @unique
+  module      String
+  name        String
+  description String?
+  roles       RolePermission[]
+}
+
+model RolePermission {
+  roleId       String
+  permissionId String
+  role         Role       @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  permission   Permission @relation(fields: [permissionId], references: [id], onDelete: Cascade)
+
+  @@id([roleId, permissionId])
+}
+
+model TenantSetting {
+  tenantId                      String   @id
+  brandName                     String?
+  logoUrl                       String?
+  primaryColor                  String   @default("#0f766e")
+  allowNegativeStock            Boolean  @default(false)
+  shareProductsAcrossBranches   Boolean  @default(true)
+  shareCustomersAcrossBranches  Boolean  @default(false)
+  customerRequiredOnSale        Boolean  @default(false)
+  bulkSaleEnabled               Boolean  @default(false)
+  professionalCommissionEnabled Boolean  @default(false)
+  whatsappRemindersEnabled      Boolean  @default(false)
+  simultaneousAppointments      Int      @default(1)
+  acceptedPaymentMethods        String[]
+  requiredCustomerFields        String[]
+  customFeatures                Json     @default("{}")
+  tenant                        Tenant   @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+}
+
+model BranchSetting {
+  branchId                 String  @id
+  tenantId                 String
+  primaryColor             String?
+  simultaneousAppointments Int?
+  customOverrides          Json    @default("{}")
+  branch                   Branch  @relation(fields: [tenantId, branchId], references: [tenantId, id], onDelete: Cascade)
+
+  @@unique([tenantId, branchId])
+  @@index([tenantId])
+}
+
+model TenantModule {
+  id        String   @id @default(cuid())
+  tenantId  String
+  moduleKey String
+  enabled   Boolean
+  reason    String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  tenant    Tenant   @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  @@unique([tenantId, moduleKey])
+}
+
+model ImpersonationSession {
+  id             String    @id @default(cuid())
+  tenantId       String
+  platformUserId String
+  reason         String
+  startedAt      DateTime  @default(now())
+  expiresAt      DateTime
+  endedAt        DateTime?
+  tenant         Tenant    @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+
+  @@index([tenantId, startedAt])
+}
+
+model AuditLog {
+  id             String         @id @default(cuid())
+  tenantId       String?
+  branchId       String?
+  userId         String?
+  platformUserId String?
+  actorType      AuditActorType
+  action         String
+  entity         String
+  entityId       String?
+  reason         String?
+  ipAddress      String?
+  userAgent      String?
+  metadata       Json?
+  createdAt      DateTime       @default(now())
+  tenant         Tenant?        @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+  branch         Branch?        @relation(fields: [branchId], references: [id], onDelete: Restrict)
+  user           User?          @relation(fields: [userId], references: [id], onDelete: Restrict)
+  platformUser   PlatformUser?  @relation(fields: [platformUserId], references: [id], onDelete: Restrict)
+
+  @@index([tenantId, createdAt])
+  @@index([platformUserId, createdAt])
+}
+
+model Product {
+  id           String    @id @default(cuid())
+  tenantId     String
+  name         String
+  internalCode String
+  sku          String?
+  barcode      String?
+  category     String?
+  brand        String?
+  supplier     String?
+  species      String?
+  unit         String    @default("UN")
+  salePrice    Decimal   @db.Decimal(14, 2)
+  costPrice    Decimal   @db.Decimal(14, 2)
+  bulkSale     Boolean   @default(false)
+  active       Boolean   @default(true)
+  minimumStock Decimal   @default(0) @db.Decimal(14, 3)
+  location     String?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  deletedAt    DateTime?
+
+  @@unique([tenantId, internalCode])
+  @@unique([tenantId, sku])
+  @@unique([tenantId, barcode])
+  @@index([tenantId, name])
+}
+
+model ProductBranch {
+  tenantId  String
+  productId String
+  branchId  String
+  active    Boolean @default(true)
+
+  @@id([productId, branchId])
+  @@index([tenantId, branchId])
+}
+
+model StockBalance {
+  id          String   @id @default(cuid())
+  tenantId    String
+  branchId    String
+  productId   String
+  quantity    Decimal  @default(0) @db.Decimal(14, 3)
+  averageCost Decimal  @default(0) @db.Decimal(14, 4)
+  updatedAt   DateTime @updatedAt
+
+  @@unique([tenantId, branchId, productId])
+  @@index([tenantId, branchId])
+}
+
+model StockMovement {
+  id                  String            @id @default(cuid())
+  tenantId            String
+  branchId            String
+  productId           String
+  userId              String
+  type                StockMovementType
+  quantity            Decimal           @db.Decimal(14, 3)
+  unitCost            Decimal?          @db.Decimal(14, 4)
+  balanceAfter        Decimal           @db.Decimal(14, 3)
+  referenceType       String?
+  referenceId         String?
+  destinationBranchId String?
+  reason              String
+  createdAt           DateTime          @default(now())
+
+  @@index([tenantId, branchId, productId, createdAt])
+}
+
+model Customer {
+  id             String    @id @default(cuid())
+  tenantId       String
+  branchId       String
+  fullName       String
+  phone          String
+  address        String?
+  document       String?
+  birthDate      DateTime?
+  notes          String?
+  lastPurchaseAt DateTime?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  deletedAt      DateTime?
+
+  @@index([tenantId, branchId, fullName])
+  @@index([tenantId, phone])
+}
+
+model Pet {
+  id         String    @id @default(cuid())
+  tenantId   String
+  customerId String
+  name       String
+  type       String
+  sex        String?
+  breed      String?
+  birthDate  DateTime?
+  notes      String?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  deletedAt  DateTime?
+
+  @@index([tenantId, customerId])
+}
+
+model Sale {
+  id                 String     @id @default(cuid())
+  tenantId           String
+  branchId           String
+  cashSessionId      String?
+  customerId         String?
+  createdById        String
+  idempotencyKey     String
+  cancelledById      String?
+  status             SaleStatus @default(COMPLETED)
+  subtotal           Decimal    @db.Decimal(14, 2)
+  discount           Decimal    @default(0) @db.Decimal(14, 2)
+  total              Decimal    @db.Decimal(14, 2)
+  cancellationReason String?
+  createdAt          DateTime   @default(now())
+  cancelledAt        DateTime?
+
+  @@unique([tenantId, idempotencyKey])
+  @@index([tenantId, branchId, createdAt])
+}
+
+model SaleItem {
+  id                String   @id @default(cuid())
+  tenantId          String
+  saleId            String
+  productId         String
+  description       String
+  quantity          Decimal  @db.Decimal(14, 3)
+  unitPrice         Decimal  @db.Decimal(14, 4)
+  discount          Decimal  @default(0) @db.Decimal(14, 2)
+  total             Decimal  @db.Decimal(14, 2)
+  bulkChargedAmount Decimal? @db.Decimal(14, 2)
+
+  @@index([tenantId, saleId])
+}
+
+model SalePayment {
+  id               String  @id @default(cuid())
+  tenantId         String
+  saleId           String
+  method           String
+  amount           Decimal @db.Decimal(14, 2)
+  correctedFrom    String?
+  correctionReason String?
+  correctedById    String?
+
+  @@index([tenantId, saleId])
+}
+
+model CashSession {
+  id             String            @id @default(cuid())
+  tenantId       String
+  branchId       String
+  operatorId     String
+  status         CashSessionStatus @default(OPEN)
+  openingAmount  Decimal           @db.Decimal(14, 2)
+  countedAmount  Decimal?          @db.Decimal(14, 2)
+  expectedAmount Decimal?          @db.Decimal(14, 2)
+  difference     Decimal?          @db.Decimal(14, 2)
+  openedAt       DateTime          @default(now())
+  closedAt       DateTime?
+  reopenedAt     DateTime?
+
+  @@index([tenantId, branchId, operatorId, status])
+}
+
+model CashMovement {
+  id            String           @id @default(cuid())
+  tenantId      String
+  branchId      String
+  cashSessionId String
+  userId        String
+  type          CashMovementType
+  amount        Decimal          @db.Decimal(14, 2)
+  reason        String
+  createdAt     DateTime         @default(now())
+
+  @@index([tenantId, cashSessionId, createdAt])
+}
+
+model FinancialCategory {
+  id       String             @id @default(cuid())
+  tenantId String
+  name     String
+  type     FinancialEntryType
+  active   Boolean            @default(true)
+
+  @@unique([tenantId, name, type])
+}
+
+model FinancialEntry {
+  id            String               @id @default(cuid())
+  tenantId      String
+  branchId      String
+  categoryId    String?
+  type          FinancialEntryType
+  status        FinancialEntryStatus @default(OPEN)
+  description   String
+  amount        Decimal              @db.Decimal(14, 2)
+  dueDate       DateTime
+  paidAt        DateTime?
+  paymentMethod String?
+  originType    String?
+  originId      String?
+  createdById   String
+  createdAt     DateTime             @default(now())
+  updatedAt     DateTime             @updatedAt
+
+  @@index([tenantId, branchId, dueDate, status])
+}
+
+model Professional {
+  id                   String  @id @default(cuid())
+  tenantId             String
+  branchId             String
+  name                 String
+  commissionPercent    Decimal @default(0) @db.Decimal(5, 2)
+  simultaneousCapacity Int     @default(1)
+  active               Boolean @default(true)
+
+  @@index([tenantId, branchId])
+}
+
+model GroomingService {
+  id                String  @id @default(cuid())
+  tenantId          String
+  name              String
+  durationMinutes   Int
+  price             Decimal @db.Decimal(14, 2)
+  commissionPercent Decimal @default(0) @db.Decimal(5, 2)
+  active            Boolean @default(true)
+
+  @@unique([tenantId, name])
+}
+
+model Appointment {
+  id             String            @id @default(cuid())
+  tenantId       String
+  branchId       String
+  professionalId String
+  serviceId      String?
+  customerId     String?
+  petId          String?
+  status         AppointmentStatus @default(SCHEDULED)
+  startsAt       DateTime
+  endsAt         DateTime
+  price          Decimal           @default(0) @db.Decimal(14, 2)
+  notes          String?
+  reminderSentAt DateTime?
+  createdById    String
+  createdAt      DateTime          @default(now())
+  updatedAt      DateTime          @updatedAt
+
+  @@index([tenantId, branchId, professionalId, startsAt])
+}
+
+model ServicePackage {
+  id           String    @id @default(cuid())
+  tenantId     String
+  customerId   String
+  petId        String?
+  serviceId    String
+  totalCredits Int
+  usedCredits  Int       @default(0)
+  expiresAt    DateTime?
+  active       Boolean   @default(true)
+  createdAt    DateTime  @default(now())
+
+  @@index([tenantId, customerId])
+}
+
+model ImportJob {
+  id             String       @id @default(cuid())
+  tenantId       String
+  branchId       String
+  createdById    String
+  idempotencyKey String
+  type           String
+  status         ImportStatus @default(PREVIEW)
+  totalRows      Int          @default(0)
+  processedRows  Int          @default(0)
+  errorRows      Int          @default(0)
+  errors         Json?
+  createdAt      DateTime     @default(now())
+  completedAt    DateTime?
+
+  @@unique([tenantId, idempotencyKey])
+  @@index([tenantId, branchId, createdAt])
+}
+
+model FiscalConfig {
+  id                   String            @id @default(cuid())
+  tenantId             String            @unique
+  environment          FiscalEnvironment @default(HOMOLOGATION)
+  provider             String?
+  encryptedCertificate String?
+  certificateExpiresAt DateTime?
+  updatedAt            DateTime          @updatedAt
+}

@@ -1,0 +1,8 @@
+import { getServerSession } from "next-auth";
+import { NextResponse } from "next/server";
+import { authOptions } from "@/lib/auth";
+import { PERMISSIONS,hasPermission } from "@/lib/permissions";
+import { prisma } from "@/lib/prisma";
+import { roleSchema } from "@/lib/schemas";
+
+export async function PATCH(request:Request,context:RouteContext<"/api/roles/[id]">){const session=await getServerSession(authOptions);if(!session?.user.tenantId||!hasPermission(session.user.permissions,PERMISSIONS.USERS_MANAGE))return NextResponse.json({error:"Sem permissão."},{status:403});const parsed=roleSchema.partial().safeParse(await request.json());if(!parsed.success)return NextResponse.json({error:"Cargo inválido."},{status:422});const {id}=await context.params;const tenantId=session.user.tenantId;const current=await prisma.role.findFirst({where:{id,tenantId}});if(!current)return NextResponse.json({error:"Cargo não encontrado."},{status:404});if(current.system)return NextResponse.json({error:"O cargo administrativo do sistema não pode ser reduzido."},{status:409});const permissions=parsed.data.permissionKeys?await prisma.permission.findMany({where:{key:{in:parsed.data.permissionKeys}}}):[];const role=await prisma.$transaction(async tx=>{if(parsed.data.permissionKeys){await tx.rolePermission.deleteMany({where:{roleId:id}});await tx.rolePermission.createMany({data:permissions.map(permission=>({roleId:id,permissionId:permission.id}))})}const updated=await tx.role.update({where:{id},data:{name:parsed.data.name,description:parsed.data.description}});await tx.auditLog.create({data:{actorType:"TENANT",tenantId,userId:session.user.id,action:"role.update",entity:"Role",entityId:id}});return updated});return NextResponse.json({role})}

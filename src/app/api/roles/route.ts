@@ -1,0 +1,10 @@
+import { getServerSession } from "next-auth";
+import { NextResponse } from "next/server";
+import { authOptions } from "@/lib/auth";
+import { PERMISSIONS,hasPermission } from "@/lib/permissions";
+import { prisma } from "@/lib/prisma";
+import { roleSchema } from "@/lib/schemas";
+
+export async function GET(){const session=await getServerSession(authOptions);if(!session?.user.tenantId||!hasPermission(session.user.permissions,PERMISSIONS.USERS_MANAGE))return NextResponse.json({error:"Sem permissão."},{status:403});const [roles,permissions]=await Promise.all([prisma.role.findMany({where:{tenantId:session.user.tenantId},include:{permissions:{include:{permission:true}}},orderBy:{name:"asc"}}),prisma.permission.findMany({orderBy:{module:"asc"}})]);return NextResponse.json({roles:roles.map(role=>({...role,permissionKeys:role.permissions.map(item=>item.permission.key)})),permissions})}
+
+export async function POST(request:Request){const session=await getServerSession(authOptions);if(!session?.user.tenantId||!hasPermission(session.user.permissions,PERMISSIONS.USERS_MANAGE))return NextResponse.json({error:"Sem permissão."},{status:403});const tenantId=session.user.tenantId;const parsed=roleSchema.safeParse(await request.json());if(!parsed.success)return NextResponse.json({error:"Cargo inválido.",fields:parsed.error.flatten().fieldErrors},{status:422});const permissions=await prisma.permission.findMany({where:{key:{in:parsed.data.permissionKeys}}});if(permissions.length!==new Set(parsed.data.permissionKeys).size)return NextResponse.json({error:"Permissão desconhecida."},{status:422});const role=await prisma.$transaction(async tx=>{const created=await tx.role.create({data:{tenantId,name:parsed.data.name,description:parsed.data.description,permissions:{create:permissions.map(permission=>({permissionId:permission.id}))}}});await tx.auditLog.create({data:{actorType:"TENANT",tenantId,userId:session.user.id,action:"role.create",entity:"Role",entityId:created.id}});return created});return NextResponse.json({role},{status:201})}

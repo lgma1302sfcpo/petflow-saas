@@ -1,0 +1,1 @@
+import { AuditWorkspace } from "@/components/audit-workspace";export default function Page(){return <><header className="page-head"><div><span className="eyebrow">Segurança</span><h1 className="display">Auditoria</h1><p>Consulte ações administrativas e operações críticas.</p></div></header><AuditWorkspace/></>}
