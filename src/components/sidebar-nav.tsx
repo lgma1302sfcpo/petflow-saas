@@ -1,15 +1,18 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import type { LucideIcon } from "lucide-react";
+import { BarChart3,Building2,CalendarDays,CircleDollarSign,LayoutDashboard,PackageSearch,ReceiptText,Settings,ShieldCheck,ShoppingCart,Store,Users,Warehouse } from "lucide-react";
 
-type NavLink = [string, string, LucideIcon, string?];
+const icons = { BarChart3,Building2,CalendarDays,CircleDollarSign,LayoutDashboard,PackageSearch,ReceiptText,Settings,ShieldCheck,ShoppingCart,Store,Users,Warehouse };
+export type NavIconKey = keyof typeof icons;
+type NavLink = [string, string, NavIconKey, string?];
 
 export function SidebarNav({ links }: { links: NavLink[] }) {
   const pathname = usePathname();
   return (
     <nav className="nav" aria-label="Navegação principal">
-      {links.map(([href, label, Icon]) => {
+      {links.map(([href, label, iconKey]) => {
+        const Icon = icons[iconKey];
         const base = href.split("#")[0];
         const isRoot = base === "/app" || base === "/platform";
         const isActive = href.includes("#")
