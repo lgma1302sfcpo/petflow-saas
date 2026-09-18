@@ -21,6 +21,8 @@ const permissionDefinitions = [
   [PERMISSIONS.GROOMING_MANAGE, "grooming", "Gerenciar banho e tosa"],
   [PERMISSIONS.USERS_MANAGE, "users", "Administrar usuários"],
   [PERMISSIONS.SETTINGS_MANAGE, "settings", "Administrar configurações"],
+  [PERMISSIONS.FISCAL_MANAGE, "fiscal", "Administrar configuração fiscal"],
+  [PERMISSIONS.FISCAL_ISSUE, "fiscal", "Emitir e gerenciar documentos fiscais"],
 ] as const;
 
 async function main() {

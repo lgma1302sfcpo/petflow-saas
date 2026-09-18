@@ -10,6 +10,8 @@ export const PERMISSIONS = {
   GROOMING_MANAGE: "grooming:manage",
   USERS_MANAGE: "users:manage",
   SETTINGS_MANAGE: "settings:manage",
+  FISCAL_MANAGE: "fiscal:manage",
+  FISCAL_ISSUE: "fiscal:issue",
 } as const;
 
 export type PermissionKey = (typeof PERMISSIONS)[keyof typeof PERMISSIONS];

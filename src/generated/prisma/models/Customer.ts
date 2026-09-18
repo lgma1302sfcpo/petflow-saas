@@ -38,6 +38,15 @@ export type CustomerMinAggregateOutputType = {
   createdAt: Date | null
   updatedAt: Date | null
   deletedAt: Date | null
+  stateRegistration: string | null
+  addressStreet: string | null
+  addressNumber: string | null
+  addressComplement: string | null
+  addressDistrict: string | null
+  addressCity: string | null
+  addressCityCode: string | null
+  addressState: string | null
+  addressZipCode: string | null
 }
 
 export type CustomerMaxAggregateOutputType = {
@@ -54,6 +63,15 @@ export type CustomerMaxAggregateOutputType = {
   createdAt: Date | null
   updatedAt: Date | null
   deletedAt: Date | null
+  stateRegistration: string | null
+  addressStreet: string | null
+  addressNumber: string | null
+  addressComplement: string | null
+  addressDistrict: string | null
+  addressCity: string | null
+  addressCityCode: string | null
+  addressState: string | null
+  addressZipCode: string | null
 }
 
 export type CustomerCountAggregateOutputType = {
@@ -70,6 +88,15 @@ export type CustomerCountAggregateOutputType = {
   createdAt: number
   updatedAt: number
   deletedAt: number
+  stateRegistration: number
+  addressStreet: number
+  addressNumber: number
+  addressComplement: number
+  addressDistrict: number
+  addressCity: number
+  addressCityCode: number
+  addressState: number
+  addressZipCode: number
   _all: number
 }
 
@@ -88,6 +115,15 @@ export type CustomerMinAggregateInputType = {
   createdAt?: true
   updatedAt?: true
   deletedAt?: true
+  stateRegistration?: true
+  addressStreet?: true
+  addressNumber?: true
+  addressComplement?: true
+  addressDistrict?: true
+  addressCity?: true
+  addressCityCode?: true
+  addressState?: true
+  addressZipCode?: true
 }
 
 export type CustomerMaxAggregateInputType = {
@@ -104,6 +140,15 @@ export type CustomerMaxAggregateInputType = {
   createdAt?: true
   updatedAt?: true
   deletedAt?: true
+  stateRegistration?: true
+  addressStreet?: true
+  addressNumber?: true
+  addressComplement?: true
+  addressDistrict?: true
+  addressCity?: true
+  addressCityCode?: true
+  addressState?: true
+  addressZipCode?: true
 }
 
 export type CustomerCountAggregateInputType = {
@@ -120,6 +165,15 @@ export type CustomerCountAggregateInputType = {
   createdAt?: true
   updatedAt?: true
   deletedAt?: true
+  stateRegistration?: true
+  addressStreet?: true
+  addressNumber?: true
+  addressComplement?: true
+  addressDistrict?: true
+  addressCity?: true
+  addressCityCode?: true
+  addressState?: true
+  addressZipCode?: true
   _all?: true
 }
 
@@ -209,6 +263,15 @@ export type CustomerGroupByOutputType = {
   createdAt: Date
   updatedAt: Date
   deletedAt: Date | null
+  stateRegistration: string | null
+  addressStreet: string | null
+  addressNumber: string | null
+  addressComplement: string | null
+  addressDistrict: string | null
+  addressCity: string | null
+  addressCityCode: string | null
+  addressState: string | null
+  addressZipCode: string | null
   _count: CustomerCountAggregateOutputType | null
   _min: CustomerMinAggregateOutputType | null
   _max: CustomerMaxAggregateOutputType | null
@@ -246,6 +309,15 @@ export type CustomerWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"Customer"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Customer"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"Customer"> | Date | string | null
+  stateRegistration?: Prisma.StringNullableFilter<"Customer"> | string | null
+  addressStreet?: Prisma.StringNullableFilter<"Customer"> | string | null
+  addressNumber?: Prisma.StringNullableFilter<"Customer"> | string | null
+  addressComplement?: Prisma.StringNullableFilter<"Customer"> | string | null
+  addressDistrict?: Prisma.StringNullableFilter<"Customer"> | string | null
+  addressCity?: Prisma.StringNullableFilter<"Customer"> | string | null
+  addressCityCode?: Prisma.StringNullableFilter<"Customer"> | string | null
+  addressState?: Prisma.StringNullableFilter<"Customer"> | string | null
+  addressZipCode?: Prisma.StringNullableFilter<"Customer"> | string | null
 }
 
 export type CustomerOrderByWithRelationInput = {
@@ -262,6 +334,15 @@ export type CustomerOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  stateRegistration?: Prisma.SortOrderInput | Prisma.SortOrder
+  addressStreet?: Prisma.SortOrderInput | Prisma.SortOrder
+  addressNumber?: Prisma.SortOrderInput | Prisma.SortOrder
+  addressComplement?: Prisma.SortOrderInput | Prisma.SortOrder
+  addressDistrict?: Prisma.SortOrderInput | Prisma.SortOrder
+  addressCity?: Prisma.SortOrderInput | Prisma.SortOrder
+  addressCityCode?: Prisma.SortOrderInput | Prisma.SortOrder
+  addressState?: Prisma.SortOrderInput | Prisma.SortOrder
+  addressZipCode?: Prisma.SortOrderInput | Prisma.SortOrder
 }
 
 export type CustomerWhereUniqueInput = Prisma.AtLeast<{
@@ -281,6 +362,15 @@ export type CustomerWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"Customer"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Customer"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"Customer"> | Date | string | null
+  stateRegistration?: Prisma.StringNullableFilter<"Customer"> | string | null
+  addressStreet?: Prisma.StringNullableFilter<"Customer"> | string | null
+  addressNumber?: Prisma.StringNullableFilter<"Customer"> | string | null
+  addressComplement?: Prisma.StringNullableFilter<"Customer"> | string | null
+  addressDistrict?: Prisma.StringNullableFilter<"Customer"> | string | null
+  addressCity?: Prisma.StringNullableFilter<"Customer"> | string | null
+  addressCityCode?: Prisma.StringNullableFilter<"Customer"> | string | null
+  addressState?: Prisma.StringNullableFilter<"Customer"> | string | null
+  addressZipCode?: Prisma.StringNullableFilter<"Customer"> | string | null
 }, "id">
 
 export type CustomerOrderByWithAggregationInput = {
@@ -297,6 +387,15 @@ export type CustomerOrderByWithAggregationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  stateRegistration?: Prisma.SortOrderInput | Prisma.SortOrder
+  addressStreet?: Prisma.SortOrderInput | Prisma.SortOrder
+  addressNumber?: Prisma.SortOrderInput | Prisma.SortOrder
+  addressComplement?: Prisma.SortOrderInput | Prisma.SortOrder
+  addressDistrict?: Prisma.SortOrderInput | Prisma.SortOrder
+  addressCity?: Prisma.SortOrderInput | Prisma.SortOrder
+  addressCityCode?: Prisma.SortOrderInput | Prisma.SortOrder
+  addressState?: Prisma.SortOrderInput | Prisma.SortOrder
+  addressZipCode?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.CustomerCountOrderByAggregateInput
   _max?: Prisma.CustomerMaxOrderByAggregateInput
   _min?: Prisma.CustomerMinOrderByAggregateInput
@@ -319,6 +418,15 @@ export type CustomerScalarWhereWithAggregatesInput = {
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Customer"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Customer"> | Date | string
   deletedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Customer"> | Date | string | null
+  stateRegistration?: Prisma.StringNullableWithAggregatesFilter<"Customer"> | string | null
+  addressStreet?: Prisma.StringNullableWithAggregatesFilter<"Customer"> | string | null
+  addressNumber?: Prisma.StringNullableWithAggregatesFilter<"Customer"> | string | null
+  addressComplement?: Prisma.StringNullableWithAggregatesFilter<"Customer"> | string | null
+  addressDistrict?: Prisma.StringNullableWithAggregatesFilter<"Customer"> | string | null
+  addressCity?: Prisma.StringNullableWithAggregatesFilter<"Customer"> | string | null
+  addressCityCode?: Prisma.StringNullableWithAggregatesFilter<"Customer"> | string | null
+  addressState?: Prisma.StringNullableWithAggregatesFilter<"Customer"> | string | null
+  addressZipCode?: Prisma.StringNullableWithAggregatesFilter<"Customer"> | string | null
 }
 
 export type CustomerCreateInput = {
@@ -335,6 +443,15 @@ export type CustomerCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
+  stateRegistration?: string | null
+  addressStreet?: string | null
+  addressNumber?: string | null
+  addressComplement?: string | null
+  addressDistrict?: string | null
+  addressCity?: string | null
+  addressCityCode?: string | null
+  addressState?: string | null
+  addressZipCode?: string | null
 }
 
 export type CustomerUncheckedCreateInput = {
@@ -351,6 +468,15 @@ export type CustomerUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
+  stateRegistration?: string | null
+  addressStreet?: string | null
+  addressNumber?: string | null
+  addressComplement?: string | null
+  addressDistrict?: string | null
+  addressCity?: string | null
+  addressCityCode?: string | null
+  addressState?: string | null
+  addressZipCode?: string | null
 }
 
 export type CustomerUpdateInput = {
@@ -367,6 +493,15 @@ export type CustomerUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  stateRegistration?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addressStreet?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addressNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addressComplement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addressDistrict?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addressCity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addressCityCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addressState?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addressZipCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type CustomerUncheckedUpdateInput = {
@@ -383,6 +518,15 @@ export type CustomerUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  stateRegistration?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addressStreet?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addressNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addressComplement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addressDistrict?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addressCity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addressCityCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addressState?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addressZipCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type CustomerCreateManyInput = {
@@ -399,6 +543,15 @@ export type CustomerCreateManyInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
+  stateRegistration?: string | null
+  addressStreet?: string | null
+  addressNumber?: string | null
+  addressComplement?: string | null
+  addressDistrict?: string | null
+  addressCity?: string | null
+  addressCityCode?: string | null
+  addressState?: string | null
+  addressZipCode?: string | null
 }
 
 export type CustomerUpdateManyMutationInput = {
@@ -415,6 +568,15 @@ export type CustomerUpdateManyMutationInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  stateRegistration?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addressStreet?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addressNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addressComplement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addressDistrict?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addressCity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addressCityCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addressState?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addressZipCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type CustomerUncheckedUpdateManyInput = {
@@ -431,6 +593,15 @@ export type CustomerUncheckedUpdateManyInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  stateRegistration?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addressStreet?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addressNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addressComplement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addressDistrict?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addressCity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addressCityCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addressState?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addressZipCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type CustomerCountOrderByAggregateInput = {
@@ -447,6 +618,15 @@ export type CustomerCountOrderByAggregateInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
+  stateRegistration?: Prisma.SortOrder
+  addressStreet?: Prisma.SortOrder
+  addressNumber?: Prisma.SortOrder
+  addressComplement?: Prisma.SortOrder
+  addressDistrict?: Prisma.SortOrder
+  addressCity?: Prisma.SortOrder
+  addressCityCode?: Prisma.SortOrder
+  addressState?: Prisma.SortOrder
+  addressZipCode?: Prisma.SortOrder
 }
 
 export type CustomerMaxOrderByAggregateInput = {
@@ -463,6 +643,15 @@ export type CustomerMaxOrderByAggregateInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
+  stateRegistration?: Prisma.SortOrder
+  addressStreet?: Prisma.SortOrder
+  addressNumber?: Prisma.SortOrder
+  addressComplement?: Prisma.SortOrder
+  addressDistrict?: Prisma.SortOrder
+  addressCity?: Prisma.SortOrder
+  addressCityCode?: Prisma.SortOrder
+  addressState?: Prisma.SortOrder
+  addressZipCode?: Prisma.SortOrder
 }
 
 export type CustomerMinOrderByAggregateInput = {
@@ -479,6 +668,15 @@ export type CustomerMinOrderByAggregateInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
+  stateRegistration?: Prisma.SortOrder
+  addressStreet?: Prisma.SortOrder
+  addressNumber?: Prisma.SortOrder
+  addressComplement?: Prisma.SortOrder
+  addressDistrict?: Prisma.SortOrder
+  addressCity?: Prisma.SortOrder
+  addressCityCode?: Prisma.SortOrder
+  addressState?: Prisma.SortOrder
+  addressZipCode?: Prisma.SortOrder
 }
 
 
@@ -497,6 +695,15 @@ export type CustomerSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
+  stateRegistration?: boolean
+  addressStreet?: boolean
+  addressNumber?: boolean
+  addressComplement?: boolean
+  addressDistrict?: boolean
+  addressCity?: boolean
+  addressCityCode?: boolean
+  addressState?: boolean
+  addressZipCode?: boolean
 }, ExtArgs["result"]["customer"]>
 
 export type CustomerSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -513,6 +720,15 @@ export type CustomerSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
+  stateRegistration?: boolean
+  addressStreet?: boolean
+  addressNumber?: boolean
+  addressComplement?: boolean
+  addressDistrict?: boolean
+  addressCity?: boolean
+  addressCityCode?: boolean
+  addressState?: boolean
+  addressZipCode?: boolean
 }, ExtArgs["result"]["customer"]>
 
 export type CustomerSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -529,6 +745,15 @@ export type CustomerSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
+  stateRegistration?: boolean
+  addressStreet?: boolean
+  addressNumber?: boolean
+  addressComplement?: boolean
+  addressDistrict?: boolean
+  addressCity?: boolean
+  addressCityCode?: boolean
+  addressState?: boolean
+  addressZipCode?: boolean
 }, ExtArgs["result"]["customer"]>
 
 export type CustomerSelectScalar = {
@@ -545,9 +770,18 @@ export type CustomerSelectScalar = {
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
+  stateRegistration?: boolean
+  addressStreet?: boolean
+  addressNumber?: boolean
+  addressComplement?: boolean
+  addressDistrict?: boolean
+  addressCity?: boolean
+  addressCityCode?: boolean
+  addressState?: boolean
+  addressZipCode?: boolean
 }
 
-export type CustomerOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "tenantId" | "branchId" | "fullName" | "phone" | "address" | "document" | "birthDate" | "notes" | "lastPurchaseAt" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["customer"]>
+export type CustomerOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "tenantId" | "branchId" | "fullName" | "phone" | "address" | "document" | "birthDate" | "notes" | "lastPurchaseAt" | "createdAt" | "updatedAt" | "deletedAt" | "stateRegistration" | "addressStreet" | "addressNumber" | "addressComplement" | "addressDistrict" | "addressCity" | "addressCityCode" | "addressState" | "addressZipCode", ExtArgs["result"]["customer"]>
 
 export type $CustomerPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Customer"
@@ -566,6 +800,15 @@ export type $CustomerPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     createdAt: Date
     updatedAt: Date
     deletedAt: Date | null
+    stateRegistration: string | null
+    addressStreet: string | null
+    addressNumber: string | null
+    addressComplement: string | null
+    addressDistrict: string | null
+    addressCity: string | null
+    addressCityCode: string | null
+    addressState: string | null
+    addressZipCode: string | null
   }, ExtArgs["result"]["customer"]>
   composites: {}
 }
@@ -1002,6 +1245,15 @@ export interface CustomerFieldRefs {
   readonly createdAt: Prisma.FieldRef<"Customer", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Customer", 'DateTime'>
   readonly deletedAt: Prisma.FieldRef<"Customer", 'DateTime'>
+  readonly stateRegistration: Prisma.FieldRef<"Customer", 'String'>
+  readonly addressStreet: Prisma.FieldRef<"Customer", 'String'>
+  readonly addressNumber: Prisma.FieldRef<"Customer", 'String'>
+  readonly addressComplement: Prisma.FieldRef<"Customer", 'String'>
+  readonly addressDistrict: Prisma.FieldRef<"Customer", 'String'>
+  readonly addressCity: Prisma.FieldRef<"Customer", 'String'>
+  readonly addressCityCode: Prisma.FieldRef<"Customer", 'String'>
+  readonly addressState: Prisma.FieldRef<"Customer", 'String'>
+  readonly addressZipCode: Prisma.FieldRef<"Customer", 'String'>
 }
     
 

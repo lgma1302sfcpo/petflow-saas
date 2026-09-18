@@ -32,6 +32,32 @@ export type FiscalConfigMinAggregateOutputType = {
   encryptedCertificate: string | null
   certificateExpiresAt: Date | null
   updatedAt: Date | null
+  providerType: $Enums.FiscalProviderType | null
+  legalName: string | null
+  tradeName: string | null
+  cnpj: string | null
+  stateRegistration: string | null
+  municipalRegistration: string | null
+  taxRegime: string | null
+  cnae: string | null
+  street: string | null
+  number: string | null
+  complement: string | null
+  district: string | null
+  city: string | null
+  cityCode: string | null
+  state: string | null
+  zipCode: string | null
+  phone: string | null
+  email: string | null
+  certificateType: string | null
+  certificateName: string | null
+  certificatePasswordEncrypted: string | null
+  enableNfe: boolean | null
+  enableNfce: boolean | null
+  autoEmail: boolean | null
+  directTransmissionEnabled: boolean | null
+  accountantApprovedAt: Date | null
 }
 
 export type FiscalConfigMaxAggregateOutputType = {
@@ -42,6 +68,32 @@ export type FiscalConfigMaxAggregateOutputType = {
   encryptedCertificate: string | null
   certificateExpiresAt: Date | null
   updatedAt: Date | null
+  providerType: $Enums.FiscalProviderType | null
+  legalName: string | null
+  tradeName: string | null
+  cnpj: string | null
+  stateRegistration: string | null
+  municipalRegistration: string | null
+  taxRegime: string | null
+  cnae: string | null
+  street: string | null
+  number: string | null
+  complement: string | null
+  district: string | null
+  city: string | null
+  cityCode: string | null
+  state: string | null
+  zipCode: string | null
+  phone: string | null
+  email: string | null
+  certificateType: string | null
+  certificateName: string | null
+  certificatePasswordEncrypted: string | null
+  enableNfe: boolean | null
+  enableNfce: boolean | null
+  autoEmail: boolean | null
+  directTransmissionEnabled: boolean | null
+  accountantApprovedAt: Date | null
 }
 
 export type FiscalConfigCountAggregateOutputType = {
@@ -52,6 +104,32 @@ export type FiscalConfigCountAggregateOutputType = {
   encryptedCertificate: number
   certificateExpiresAt: number
   updatedAt: number
+  providerType: number
+  legalName: number
+  tradeName: number
+  cnpj: number
+  stateRegistration: number
+  municipalRegistration: number
+  taxRegime: number
+  cnae: number
+  street: number
+  number: number
+  complement: number
+  district: number
+  city: number
+  cityCode: number
+  state: number
+  zipCode: number
+  phone: number
+  email: number
+  certificateType: number
+  certificateName: number
+  certificatePasswordEncrypted: number
+  enableNfe: number
+  enableNfce: number
+  autoEmail: number
+  directTransmissionEnabled: number
+  accountantApprovedAt: number
   _all: number
 }
 
@@ -64,6 +142,32 @@ export type FiscalConfigMinAggregateInputType = {
   encryptedCertificate?: true
   certificateExpiresAt?: true
   updatedAt?: true
+  providerType?: true
+  legalName?: true
+  tradeName?: true
+  cnpj?: true
+  stateRegistration?: true
+  municipalRegistration?: true
+  taxRegime?: true
+  cnae?: true
+  street?: true
+  number?: true
+  complement?: true
+  district?: true
+  city?: true
+  cityCode?: true
+  state?: true
+  zipCode?: true
+  phone?: true
+  email?: true
+  certificateType?: true
+  certificateName?: true
+  certificatePasswordEncrypted?: true
+  enableNfe?: true
+  enableNfce?: true
+  autoEmail?: true
+  directTransmissionEnabled?: true
+  accountantApprovedAt?: true
 }
 
 export type FiscalConfigMaxAggregateInputType = {
@@ -74,6 +178,32 @@ export type FiscalConfigMaxAggregateInputType = {
   encryptedCertificate?: true
   certificateExpiresAt?: true
   updatedAt?: true
+  providerType?: true
+  legalName?: true
+  tradeName?: true
+  cnpj?: true
+  stateRegistration?: true
+  municipalRegistration?: true
+  taxRegime?: true
+  cnae?: true
+  street?: true
+  number?: true
+  complement?: true
+  district?: true
+  city?: true
+  cityCode?: true
+  state?: true
+  zipCode?: true
+  phone?: true
+  email?: true
+  certificateType?: true
+  certificateName?: true
+  certificatePasswordEncrypted?: true
+  enableNfe?: true
+  enableNfce?: true
+  autoEmail?: true
+  directTransmissionEnabled?: true
+  accountantApprovedAt?: true
 }
 
 export type FiscalConfigCountAggregateInputType = {
@@ -84,6 +214,32 @@ export type FiscalConfigCountAggregateInputType = {
   encryptedCertificate?: true
   certificateExpiresAt?: true
   updatedAt?: true
+  providerType?: true
+  legalName?: true
+  tradeName?: true
+  cnpj?: true
+  stateRegistration?: true
+  municipalRegistration?: true
+  taxRegime?: true
+  cnae?: true
+  street?: true
+  number?: true
+  complement?: true
+  district?: true
+  city?: true
+  cityCode?: true
+  state?: true
+  zipCode?: true
+  phone?: true
+  email?: true
+  certificateType?: true
+  certificateName?: true
+  certificatePasswordEncrypted?: true
+  enableNfe?: true
+  enableNfce?: true
+  autoEmail?: true
+  directTransmissionEnabled?: true
+  accountantApprovedAt?: true
   _all?: true
 }
 
@@ -167,6 +323,32 @@ export type FiscalConfigGroupByOutputType = {
   encryptedCertificate: string | null
   certificateExpiresAt: Date | null
   updatedAt: Date
+  providerType: $Enums.FiscalProviderType
+  legalName: string | null
+  tradeName: string | null
+  cnpj: string | null
+  stateRegistration: string | null
+  municipalRegistration: string | null
+  taxRegime: string | null
+  cnae: string | null
+  street: string | null
+  number: string | null
+  complement: string | null
+  district: string | null
+  city: string | null
+  cityCode: string | null
+  state: string | null
+  zipCode: string | null
+  phone: string | null
+  email: string | null
+  certificateType: string
+  certificateName: string | null
+  certificatePasswordEncrypted: string | null
+  enableNfe: boolean
+  enableNfce: boolean
+  autoEmail: boolean
+  directTransmissionEnabled: boolean
+  accountantApprovedAt: Date | null
   _count: FiscalConfigCountAggregateOutputType | null
   _min: FiscalConfigMinAggregateOutputType | null
   _max: FiscalConfigMaxAggregateOutputType | null
@@ -198,6 +380,32 @@ export type FiscalConfigWhereInput = {
   encryptedCertificate?: Prisma.StringNullableFilter<"FiscalConfig"> | string | null
   certificateExpiresAt?: Prisma.DateTimeNullableFilter<"FiscalConfig"> | Date | string | null
   updatedAt?: Prisma.DateTimeFilter<"FiscalConfig"> | Date | string
+  providerType?: Prisma.EnumFiscalProviderTypeFilter<"FiscalConfig"> | $Enums.FiscalProviderType
+  legalName?: Prisma.StringNullableFilter<"FiscalConfig"> | string | null
+  tradeName?: Prisma.StringNullableFilter<"FiscalConfig"> | string | null
+  cnpj?: Prisma.StringNullableFilter<"FiscalConfig"> | string | null
+  stateRegistration?: Prisma.StringNullableFilter<"FiscalConfig"> | string | null
+  municipalRegistration?: Prisma.StringNullableFilter<"FiscalConfig"> | string | null
+  taxRegime?: Prisma.StringNullableFilter<"FiscalConfig"> | string | null
+  cnae?: Prisma.StringNullableFilter<"FiscalConfig"> | string | null
+  street?: Prisma.StringNullableFilter<"FiscalConfig"> | string | null
+  number?: Prisma.StringNullableFilter<"FiscalConfig"> | string | null
+  complement?: Prisma.StringNullableFilter<"FiscalConfig"> | string | null
+  district?: Prisma.StringNullableFilter<"FiscalConfig"> | string | null
+  city?: Prisma.StringNullableFilter<"FiscalConfig"> | string | null
+  cityCode?: Prisma.StringNullableFilter<"FiscalConfig"> | string | null
+  state?: Prisma.StringNullableFilter<"FiscalConfig"> | string | null
+  zipCode?: Prisma.StringNullableFilter<"FiscalConfig"> | string | null
+  phone?: Prisma.StringNullableFilter<"FiscalConfig"> | string | null
+  email?: Prisma.StringNullableFilter<"FiscalConfig"> | string | null
+  certificateType?: Prisma.StringFilter<"FiscalConfig"> | string
+  certificateName?: Prisma.StringNullableFilter<"FiscalConfig"> | string | null
+  certificatePasswordEncrypted?: Prisma.StringNullableFilter<"FiscalConfig"> | string | null
+  enableNfe?: Prisma.BoolFilter<"FiscalConfig"> | boolean
+  enableNfce?: Prisma.BoolFilter<"FiscalConfig"> | boolean
+  autoEmail?: Prisma.BoolFilter<"FiscalConfig"> | boolean
+  directTransmissionEnabled?: Prisma.BoolFilter<"FiscalConfig"> | boolean
+  accountantApprovedAt?: Prisma.DateTimeNullableFilter<"FiscalConfig"> | Date | string | null
 }
 
 export type FiscalConfigOrderByWithRelationInput = {
@@ -208,6 +416,32 @@ export type FiscalConfigOrderByWithRelationInput = {
   encryptedCertificate?: Prisma.SortOrderInput | Prisma.SortOrder
   certificateExpiresAt?: Prisma.SortOrderInput | Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  providerType?: Prisma.SortOrder
+  legalName?: Prisma.SortOrderInput | Prisma.SortOrder
+  tradeName?: Prisma.SortOrderInput | Prisma.SortOrder
+  cnpj?: Prisma.SortOrderInput | Prisma.SortOrder
+  stateRegistration?: Prisma.SortOrderInput | Prisma.SortOrder
+  municipalRegistration?: Prisma.SortOrderInput | Prisma.SortOrder
+  taxRegime?: Prisma.SortOrderInput | Prisma.SortOrder
+  cnae?: Prisma.SortOrderInput | Prisma.SortOrder
+  street?: Prisma.SortOrderInput | Prisma.SortOrder
+  number?: Prisma.SortOrderInput | Prisma.SortOrder
+  complement?: Prisma.SortOrderInput | Prisma.SortOrder
+  district?: Prisma.SortOrderInput | Prisma.SortOrder
+  city?: Prisma.SortOrderInput | Prisma.SortOrder
+  cityCode?: Prisma.SortOrderInput | Prisma.SortOrder
+  state?: Prisma.SortOrderInput | Prisma.SortOrder
+  zipCode?: Prisma.SortOrderInput | Prisma.SortOrder
+  phone?: Prisma.SortOrderInput | Prisma.SortOrder
+  email?: Prisma.SortOrderInput | Prisma.SortOrder
+  certificateType?: Prisma.SortOrder
+  certificateName?: Prisma.SortOrderInput | Prisma.SortOrder
+  certificatePasswordEncrypted?: Prisma.SortOrderInput | Prisma.SortOrder
+  enableNfe?: Prisma.SortOrder
+  enableNfce?: Prisma.SortOrder
+  autoEmail?: Prisma.SortOrder
+  directTransmissionEnabled?: Prisma.SortOrder
+  accountantApprovedAt?: Prisma.SortOrderInput | Prisma.SortOrder
 }
 
 export type FiscalConfigWhereUniqueInput = Prisma.AtLeast<{
@@ -221,6 +455,32 @@ export type FiscalConfigWhereUniqueInput = Prisma.AtLeast<{
   encryptedCertificate?: Prisma.StringNullableFilter<"FiscalConfig"> | string | null
   certificateExpiresAt?: Prisma.DateTimeNullableFilter<"FiscalConfig"> | Date | string | null
   updatedAt?: Prisma.DateTimeFilter<"FiscalConfig"> | Date | string
+  providerType?: Prisma.EnumFiscalProviderTypeFilter<"FiscalConfig"> | $Enums.FiscalProviderType
+  legalName?: Prisma.StringNullableFilter<"FiscalConfig"> | string | null
+  tradeName?: Prisma.StringNullableFilter<"FiscalConfig"> | string | null
+  cnpj?: Prisma.StringNullableFilter<"FiscalConfig"> | string | null
+  stateRegistration?: Prisma.StringNullableFilter<"FiscalConfig"> | string | null
+  municipalRegistration?: Prisma.StringNullableFilter<"FiscalConfig"> | string | null
+  taxRegime?: Prisma.StringNullableFilter<"FiscalConfig"> | string | null
+  cnae?: Prisma.StringNullableFilter<"FiscalConfig"> | string | null
+  street?: Prisma.StringNullableFilter<"FiscalConfig"> | string | null
+  number?: Prisma.StringNullableFilter<"FiscalConfig"> | string | null
+  complement?: Prisma.StringNullableFilter<"FiscalConfig"> | string | null
+  district?: Prisma.StringNullableFilter<"FiscalConfig"> | string | null
+  city?: Prisma.StringNullableFilter<"FiscalConfig"> | string | null
+  cityCode?: Prisma.StringNullableFilter<"FiscalConfig"> | string | null
+  state?: Prisma.StringNullableFilter<"FiscalConfig"> | string | null
+  zipCode?: Prisma.StringNullableFilter<"FiscalConfig"> | string | null
+  phone?: Prisma.StringNullableFilter<"FiscalConfig"> | string | null
+  email?: Prisma.StringNullableFilter<"FiscalConfig"> | string | null
+  certificateType?: Prisma.StringFilter<"FiscalConfig"> | string
+  certificateName?: Prisma.StringNullableFilter<"FiscalConfig"> | string | null
+  certificatePasswordEncrypted?: Prisma.StringNullableFilter<"FiscalConfig"> | string | null
+  enableNfe?: Prisma.BoolFilter<"FiscalConfig"> | boolean
+  enableNfce?: Prisma.BoolFilter<"FiscalConfig"> | boolean
+  autoEmail?: Prisma.BoolFilter<"FiscalConfig"> | boolean
+  directTransmissionEnabled?: Prisma.BoolFilter<"FiscalConfig"> | boolean
+  accountantApprovedAt?: Prisma.DateTimeNullableFilter<"FiscalConfig"> | Date | string | null
 }, "id" | "tenantId">
 
 export type FiscalConfigOrderByWithAggregationInput = {
@@ -231,6 +491,32 @@ export type FiscalConfigOrderByWithAggregationInput = {
   encryptedCertificate?: Prisma.SortOrderInput | Prisma.SortOrder
   certificateExpiresAt?: Prisma.SortOrderInput | Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  providerType?: Prisma.SortOrder
+  legalName?: Prisma.SortOrderInput | Prisma.SortOrder
+  tradeName?: Prisma.SortOrderInput | Prisma.SortOrder
+  cnpj?: Prisma.SortOrderInput | Prisma.SortOrder
+  stateRegistration?: Prisma.SortOrderInput | Prisma.SortOrder
+  municipalRegistration?: Prisma.SortOrderInput | Prisma.SortOrder
+  taxRegime?: Prisma.SortOrderInput | Prisma.SortOrder
+  cnae?: Prisma.SortOrderInput | Prisma.SortOrder
+  street?: Prisma.SortOrderInput | Prisma.SortOrder
+  number?: Prisma.SortOrderInput | Prisma.SortOrder
+  complement?: Prisma.SortOrderInput | Prisma.SortOrder
+  district?: Prisma.SortOrderInput | Prisma.SortOrder
+  city?: Prisma.SortOrderInput | Prisma.SortOrder
+  cityCode?: Prisma.SortOrderInput | Prisma.SortOrder
+  state?: Prisma.SortOrderInput | Prisma.SortOrder
+  zipCode?: Prisma.SortOrderInput | Prisma.SortOrder
+  phone?: Prisma.SortOrderInput | Prisma.SortOrder
+  email?: Prisma.SortOrderInput | Prisma.SortOrder
+  certificateType?: Prisma.SortOrder
+  certificateName?: Prisma.SortOrderInput | Prisma.SortOrder
+  certificatePasswordEncrypted?: Prisma.SortOrderInput | Prisma.SortOrder
+  enableNfe?: Prisma.SortOrder
+  enableNfce?: Prisma.SortOrder
+  autoEmail?: Prisma.SortOrder
+  directTransmissionEnabled?: Prisma.SortOrder
+  accountantApprovedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.FiscalConfigCountOrderByAggregateInput
   _max?: Prisma.FiscalConfigMaxOrderByAggregateInput
   _min?: Prisma.FiscalConfigMinOrderByAggregateInput
@@ -247,6 +533,32 @@ export type FiscalConfigScalarWhereWithAggregatesInput = {
   encryptedCertificate?: Prisma.StringNullableWithAggregatesFilter<"FiscalConfig"> | string | null
   certificateExpiresAt?: Prisma.DateTimeNullableWithAggregatesFilter<"FiscalConfig"> | Date | string | null
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"FiscalConfig"> | Date | string
+  providerType?: Prisma.EnumFiscalProviderTypeWithAggregatesFilter<"FiscalConfig"> | $Enums.FiscalProviderType
+  legalName?: Prisma.StringNullableWithAggregatesFilter<"FiscalConfig"> | string | null
+  tradeName?: Prisma.StringNullableWithAggregatesFilter<"FiscalConfig"> | string | null
+  cnpj?: Prisma.StringNullableWithAggregatesFilter<"FiscalConfig"> | string | null
+  stateRegistration?: Prisma.StringNullableWithAggregatesFilter<"FiscalConfig"> | string | null
+  municipalRegistration?: Prisma.StringNullableWithAggregatesFilter<"FiscalConfig"> | string | null
+  taxRegime?: Prisma.StringNullableWithAggregatesFilter<"FiscalConfig"> | string | null
+  cnae?: Prisma.StringNullableWithAggregatesFilter<"FiscalConfig"> | string | null
+  street?: Prisma.StringNullableWithAggregatesFilter<"FiscalConfig"> | string | null
+  number?: Prisma.StringNullableWithAggregatesFilter<"FiscalConfig"> | string | null
+  complement?: Prisma.StringNullableWithAggregatesFilter<"FiscalConfig"> | string | null
+  district?: Prisma.StringNullableWithAggregatesFilter<"FiscalConfig"> | string | null
+  city?: Prisma.StringNullableWithAggregatesFilter<"FiscalConfig"> | string | null
+  cityCode?: Prisma.StringNullableWithAggregatesFilter<"FiscalConfig"> | string | null
+  state?: Prisma.StringNullableWithAggregatesFilter<"FiscalConfig"> | string | null
+  zipCode?: Prisma.StringNullableWithAggregatesFilter<"FiscalConfig"> | string | null
+  phone?: Prisma.StringNullableWithAggregatesFilter<"FiscalConfig"> | string | null
+  email?: Prisma.StringNullableWithAggregatesFilter<"FiscalConfig"> | string | null
+  certificateType?: Prisma.StringWithAggregatesFilter<"FiscalConfig"> | string
+  certificateName?: Prisma.StringNullableWithAggregatesFilter<"FiscalConfig"> | string | null
+  certificatePasswordEncrypted?: Prisma.StringNullableWithAggregatesFilter<"FiscalConfig"> | string | null
+  enableNfe?: Prisma.BoolWithAggregatesFilter<"FiscalConfig"> | boolean
+  enableNfce?: Prisma.BoolWithAggregatesFilter<"FiscalConfig"> | boolean
+  autoEmail?: Prisma.BoolWithAggregatesFilter<"FiscalConfig"> | boolean
+  directTransmissionEnabled?: Prisma.BoolWithAggregatesFilter<"FiscalConfig"> | boolean
+  accountantApprovedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"FiscalConfig"> | Date | string | null
 }
 
 export type FiscalConfigCreateInput = {
@@ -257,6 +569,32 @@ export type FiscalConfigCreateInput = {
   encryptedCertificate?: string | null
   certificateExpiresAt?: Date | string | null
   updatedAt?: Date | string
+  providerType?: $Enums.FiscalProviderType
+  legalName?: string | null
+  tradeName?: string | null
+  cnpj?: string | null
+  stateRegistration?: string | null
+  municipalRegistration?: string | null
+  taxRegime?: string | null
+  cnae?: string | null
+  street?: string | null
+  number?: string | null
+  complement?: string | null
+  district?: string | null
+  city?: string | null
+  cityCode?: string | null
+  state?: string | null
+  zipCode?: string | null
+  phone?: string | null
+  email?: string | null
+  certificateType?: string
+  certificateName?: string | null
+  certificatePasswordEncrypted?: string | null
+  enableNfe?: boolean
+  enableNfce?: boolean
+  autoEmail?: boolean
+  directTransmissionEnabled?: boolean
+  accountantApprovedAt?: Date | string | null
 }
 
 export type FiscalConfigUncheckedCreateInput = {
@@ -267,6 +605,32 @@ export type FiscalConfigUncheckedCreateInput = {
   encryptedCertificate?: string | null
   certificateExpiresAt?: Date | string | null
   updatedAt?: Date | string
+  providerType?: $Enums.FiscalProviderType
+  legalName?: string | null
+  tradeName?: string | null
+  cnpj?: string | null
+  stateRegistration?: string | null
+  municipalRegistration?: string | null
+  taxRegime?: string | null
+  cnae?: string | null
+  street?: string | null
+  number?: string | null
+  complement?: string | null
+  district?: string | null
+  city?: string | null
+  cityCode?: string | null
+  state?: string | null
+  zipCode?: string | null
+  phone?: string | null
+  email?: string | null
+  certificateType?: string
+  certificateName?: string | null
+  certificatePasswordEncrypted?: string | null
+  enableNfe?: boolean
+  enableNfce?: boolean
+  autoEmail?: boolean
+  directTransmissionEnabled?: boolean
+  accountantApprovedAt?: Date | string | null
 }
 
 export type FiscalConfigUpdateInput = {
@@ -277,6 +641,32 @@ export type FiscalConfigUpdateInput = {
   encryptedCertificate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   certificateExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  providerType?: Prisma.EnumFiscalProviderTypeFieldUpdateOperationsInput | $Enums.FiscalProviderType
+  legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cnpj?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stateRegistration?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  municipalRegistration?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxRegime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cnae?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  complement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cityCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  zipCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateType?: Prisma.StringFieldUpdateOperationsInput | string
+  certificateName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificatePasswordEncrypted?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  enableNfe?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  enableNfce?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  autoEmail?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  directTransmissionEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountantApprovedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type FiscalConfigUncheckedUpdateInput = {
@@ -287,6 +677,32 @@ export type FiscalConfigUncheckedUpdateInput = {
   encryptedCertificate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   certificateExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  providerType?: Prisma.EnumFiscalProviderTypeFieldUpdateOperationsInput | $Enums.FiscalProviderType
+  legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cnpj?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stateRegistration?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  municipalRegistration?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxRegime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cnae?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  complement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cityCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  zipCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateType?: Prisma.StringFieldUpdateOperationsInput | string
+  certificateName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificatePasswordEncrypted?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  enableNfe?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  enableNfce?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  autoEmail?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  directTransmissionEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountantApprovedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type FiscalConfigCreateManyInput = {
@@ -297,6 +713,32 @@ export type FiscalConfigCreateManyInput = {
   encryptedCertificate?: string | null
   certificateExpiresAt?: Date | string | null
   updatedAt?: Date | string
+  providerType?: $Enums.FiscalProviderType
+  legalName?: string | null
+  tradeName?: string | null
+  cnpj?: string | null
+  stateRegistration?: string | null
+  municipalRegistration?: string | null
+  taxRegime?: string | null
+  cnae?: string | null
+  street?: string | null
+  number?: string | null
+  complement?: string | null
+  district?: string | null
+  city?: string | null
+  cityCode?: string | null
+  state?: string | null
+  zipCode?: string | null
+  phone?: string | null
+  email?: string | null
+  certificateType?: string
+  certificateName?: string | null
+  certificatePasswordEncrypted?: string | null
+  enableNfe?: boolean
+  enableNfce?: boolean
+  autoEmail?: boolean
+  directTransmissionEnabled?: boolean
+  accountantApprovedAt?: Date | string | null
 }
 
 export type FiscalConfigUpdateManyMutationInput = {
@@ -307,6 +749,32 @@ export type FiscalConfigUpdateManyMutationInput = {
   encryptedCertificate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   certificateExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  providerType?: Prisma.EnumFiscalProviderTypeFieldUpdateOperationsInput | $Enums.FiscalProviderType
+  legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cnpj?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stateRegistration?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  municipalRegistration?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxRegime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cnae?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  complement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cityCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  zipCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateType?: Prisma.StringFieldUpdateOperationsInput | string
+  certificateName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificatePasswordEncrypted?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  enableNfe?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  enableNfce?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  autoEmail?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  directTransmissionEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountantApprovedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type FiscalConfigUncheckedUpdateManyInput = {
@@ -317,6 +785,32 @@ export type FiscalConfigUncheckedUpdateManyInput = {
   encryptedCertificate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   certificateExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  providerType?: Prisma.EnumFiscalProviderTypeFieldUpdateOperationsInput | $Enums.FiscalProviderType
+  legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tradeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cnpj?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stateRegistration?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  municipalRegistration?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxRegime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cnae?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  complement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cityCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  zipCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateType?: Prisma.StringFieldUpdateOperationsInput | string
+  certificateName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificatePasswordEncrypted?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  enableNfe?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  enableNfce?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  autoEmail?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  directTransmissionEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountantApprovedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type FiscalConfigCountOrderByAggregateInput = {
@@ -327,6 +821,32 @@ export type FiscalConfigCountOrderByAggregateInput = {
   encryptedCertificate?: Prisma.SortOrder
   certificateExpiresAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  providerType?: Prisma.SortOrder
+  legalName?: Prisma.SortOrder
+  tradeName?: Prisma.SortOrder
+  cnpj?: Prisma.SortOrder
+  stateRegistration?: Prisma.SortOrder
+  municipalRegistration?: Prisma.SortOrder
+  taxRegime?: Prisma.SortOrder
+  cnae?: Prisma.SortOrder
+  street?: Prisma.SortOrder
+  number?: Prisma.SortOrder
+  complement?: Prisma.SortOrder
+  district?: Prisma.SortOrder
+  city?: Prisma.SortOrder
+  cityCode?: Prisma.SortOrder
+  state?: Prisma.SortOrder
+  zipCode?: Prisma.SortOrder
+  phone?: Prisma.SortOrder
+  email?: Prisma.SortOrder
+  certificateType?: Prisma.SortOrder
+  certificateName?: Prisma.SortOrder
+  certificatePasswordEncrypted?: Prisma.SortOrder
+  enableNfe?: Prisma.SortOrder
+  enableNfce?: Prisma.SortOrder
+  autoEmail?: Prisma.SortOrder
+  directTransmissionEnabled?: Prisma.SortOrder
+  accountantApprovedAt?: Prisma.SortOrder
 }
 
 export type FiscalConfigMaxOrderByAggregateInput = {
@@ -337,6 +857,32 @@ export type FiscalConfigMaxOrderByAggregateInput = {
   encryptedCertificate?: Prisma.SortOrder
   certificateExpiresAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  providerType?: Prisma.SortOrder
+  legalName?: Prisma.SortOrder
+  tradeName?: Prisma.SortOrder
+  cnpj?: Prisma.SortOrder
+  stateRegistration?: Prisma.SortOrder
+  municipalRegistration?: Prisma.SortOrder
+  taxRegime?: Prisma.SortOrder
+  cnae?: Prisma.SortOrder
+  street?: Prisma.SortOrder
+  number?: Prisma.SortOrder
+  complement?: Prisma.SortOrder
+  district?: Prisma.SortOrder
+  city?: Prisma.SortOrder
+  cityCode?: Prisma.SortOrder
+  state?: Prisma.SortOrder
+  zipCode?: Prisma.SortOrder
+  phone?: Prisma.SortOrder
+  email?: Prisma.SortOrder
+  certificateType?: Prisma.SortOrder
+  certificateName?: Prisma.SortOrder
+  certificatePasswordEncrypted?: Prisma.SortOrder
+  enableNfe?: Prisma.SortOrder
+  enableNfce?: Prisma.SortOrder
+  autoEmail?: Prisma.SortOrder
+  directTransmissionEnabled?: Prisma.SortOrder
+  accountantApprovedAt?: Prisma.SortOrder
 }
 
 export type FiscalConfigMinOrderByAggregateInput = {
@@ -347,10 +893,40 @@ export type FiscalConfigMinOrderByAggregateInput = {
   encryptedCertificate?: Prisma.SortOrder
   certificateExpiresAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  providerType?: Prisma.SortOrder
+  legalName?: Prisma.SortOrder
+  tradeName?: Prisma.SortOrder
+  cnpj?: Prisma.SortOrder
+  stateRegistration?: Prisma.SortOrder
+  municipalRegistration?: Prisma.SortOrder
+  taxRegime?: Prisma.SortOrder
+  cnae?: Prisma.SortOrder
+  street?: Prisma.SortOrder
+  number?: Prisma.SortOrder
+  complement?: Prisma.SortOrder
+  district?: Prisma.SortOrder
+  city?: Prisma.SortOrder
+  cityCode?: Prisma.SortOrder
+  state?: Prisma.SortOrder
+  zipCode?: Prisma.SortOrder
+  phone?: Prisma.SortOrder
+  email?: Prisma.SortOrder
+  certificateType?: Prisma.SortOrder
+  certificateName?: Prisma.SortOrder
+  certificatePasswordEncrypted?: Prisma.SortOrder
+  enableNfe?: Prisma.SortOrder
+  enableNfce?: Prisma.SortOrder
+  autoEmail?: Prisma.SortOrder
+  directTransmissionEnabled?: Prisma.SortOrder
+  accountantApprovedAt?: Prisma.SortOrder
 }
 
 export type EnumFiscalEnvironmentFieldUpdateOperationsInput = {
   set?: $Enums.FiscalEnvironment
+}
+
+export type EnumFiscalProviderTypeFieldUpdateOperationsInput = {
+  set?: $Enums.FiscalProviderType
 }
 
 
@@ -363,6 +939,32 @@ export type FiscalConfigSelect<ExtArgs extends runtime.Types.Extensions.Internal
   encryptedCertificate?: boolean
   certificateExpiresAt?: boolean
   updatedAt?: boolean
+  providerType?: boolean
+  legalName?: boolean
+  tradeName?: boolean
+  cnpj?: boolean
+  stateRegistration?: boolean
+  municipalRegistration?: boolean
+  taxRegime?: boolean
+  cnae?: boolean
+  street?: boolean
+  number?: boolean
+  complement?: boolean
+  district?: boolean
+  city?: boolean
+  cityCode?: boolean
+  state?: boolean
+  zipCode?: boolean
+  phone?: boolean
+  email?: boolean
+  certificateType?: boolean
+  certificateName?: boolean
+  certificatePasswordEncrypted?: boolean
+  enableNfe?: boolean
+  enableNfce?: boolean
+  autoEmail?: boolean
+  directTransmissionEnabled?: boolean
+  accountantApprovedAt?: boolean
 }, ExtArgs["result"]["fiscalConfig"]>
 
 export type FiscalConfigSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -373,6 +975,32 @@ export type FiscalConfigSelectCreateManyAndReturn<ExtArgs extends runtime.Types.
   encryptedCertificate?: boolean
   certificateExpiresAt?: boolean
   updatedAt?: boolean
+  providerType?: boolean
+  legalName?: boolean
+  tradeName?: boolean
+  cnpj?: boolean
+  stateRegistration?: boolean
+  municipalRegistration?: boolean
+  taxRegime?: boolean
+  cnae?: boolean
+  street?: boolean
+  number?: boolean
+  complement?: boolean
+  district?: boolean
+  city?: boolean
+  cityCode?: boolean
+  state?: boolean
+  zipCode?: boolean
+  phone?: boolean
+  email?: boolean
+  certificateType?: boolean
+  certificateName?: boolean
+  certificatePasswordEncrypted?: boolean
+  enableNfe?: boolean
+  enableNfce?: boolean
+  autoEmail?: boolean
+  directTransmissionEnabled?: boolean
+  accountantApprovedAt?: boolean
 }, ExtArgs["result"]["fiscalConfig"]>
 
 export type FiscalConfigSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -383,6 +1011,32 @@ export type FiscalConfigSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.
   encryptedCertificate?: boolean
   certificateExpiresAt?: boolean
   updatedAt?: boolean
+  providerType?: boolean
+  legalName?: boolean
+  tradeName?: boolean
+  cnpj?: boolean
+  stateRegistration?: boolean
+  municipalRegistration?: boolean
+  taxRegime?: boolean
+  cnae?: boolean
+  street?: boolean
+  number?: boolean
+  complement?: boolean
+  district?: boolean
+  city?: boolean
+  cityCode?: boolean
+  state?: boolean
+  zipCode?: boolean
+  phone?: boolean
+  email?: boolean
+  certificateType?: boolean
+  certificateName?: boolean
+  certificatePasswordEncrypted?: boolean
+  enableNfe?: boolean
+  enableNfce?: boolean
+  autoEmail?: boolean
+  directTransmissionEnabled?: boolean
+  accountantApprovedAt?: boolean
 }, ExtArgs["result"]["fiscalConfig"]>
 
 export type FiscalConfigSelectScalar = {
@@ -393,9 +1047,35 @@ export type FiscalConfigSelectScalar = {
   encryptedCertificate?: boolean
   certificateExpiresAt?: boolean
   updatedAt?: boolean
+  providerType?: boolean
+  legalName?: boolean
+  tradeName?: boolean
+  cnpj?: boolean
+  stateRegistration?: boolean
+  municipalRegistration?: boolean
+  taxRegime?: boolean
+  cnae?: boolean
+  street?: boolean
+  number?: boolean
+  complement?: boolean
+  district?: boolean
+  city?: boolean
+  cityCode?: boolean
+  state?: boolean
+  zipCode?: boolean
+  phone?: boolean
+  email?: boolean
+  certificateType?: boolean
+  certificateName?: boolean
+  certificatePasswordEncrypted?: boolean
+  enableNfe?: boolean
+  enableNfce?: boolean
+  autoEmail?: boolean
+  directTransmissionEnabled?: boolean
+  accountantApprovedAt?: boolean
 }
 
-export type FiscalConfigOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "tenantId" | "environment" | "provider" | "encryptedCertificate" | "certificateExpiresAt" | "updatedAt", ExtArgs["result"]["fiscalConfig"]>
+export type FiscalConfigOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "tenantId" | "environment" | "provider" | "encryptedCertificate" | "certificateExpiresAt" | "updatedAt" | "providerType" | "legalName" | "tradeName" | "cnpj" | "stateRegistration" | "municipalRegistration" | "taxRegime" | "cnae" | "street" | "number" | "complement" | "district" | "city" | "cityCode" | "state" | "zipCode" | "phone" | "email" | "certificateType" | "certificateName" | "certificatePasswordEncrypted" | "enableNfe" | "enableNfce" | "autoEmail" | "directTransmissionEnabled" | "accountantApprovedAt", ExtArgs["result"]["fiscalConfig"]>
 
 export type $FiscalConfigPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "FiscalConfig"
@@ -408,6 +1088,32 @@ export type $FiscalConfigPayload<ExtArgs extends runtime.Types.Extensions.Intern
     encryptedCertificate: string | null
     certificateExpiresAt: Date | null
     updatedAt: Date
+    providerType: $Enums.FiscalProviderType
+    legalName: string | null
+    tradeName: string | null
+    cnpj: string | null
+    stateRegistration: string | null
+    municipalRegistration: string | null
+    taxRegime: string | null
+    cnae: string | null
+    street: string | null
+    number: string | null
+    complement: string | null
+    district: string | null
+    city: string | null
+    cityCode: string | null
+    state: string | null
+    zipCode: string | null
+    phone: string | null
+    email: string | null
+    certificateType: string
+    certificateName: string | null
+    certificatePasswordEncrypted: string | null
+    enableNfe: boolean
+    enableNfce: boolean
+    autoEmail: boolean
+    directTransmissionEnabled: boolean
+    accountantApprovedAt: Date | null
   }, ExtArgs["result"]["fiscalConfig"]>
   composites: {}
 }
@@ -838,6 +1544,32 @@ export interface FiscalConfigFieldRefs {
   readonly encryptedCertificate: Prisma.FieldRef<"FiscalConfig", 'String'>
   readonly certificateExpiresAt: Prisma.FieldRef<"FiscalConfig", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"FiscalConfig", 'DateTime'>
+  readonly providerType: Prisma.FieldRef<"FiscalConfig", 'FiscalProviderType'>
+  readonly legalName: Prisma.FieldRef<"FiscalConfig", 'String'>
+  readonly tradeName: Prisma.FieldRef<"FiscalConfig", 'String'>
+  readonly cnpj: Prisma.FieldRef<"FiscalConfig", 'String'>
+  readonly stateRegistration: Prisma.FieldRef<"FiscalConfig", 'String'>
+  readonly municipalRegistration: Prisma.FieldRef<"FiscalConfig", 'String'>
+  readonly taxRegime: Prisma.FieldRef<"FiscalConfig", 'String'>
+  readonly cnae: Prisma.FieldRef<"FiscalConfig", 'String'>
+  readonly street: Prisma.FieldRef<"FiscalConfig", 'String'>
+  readonly number: Prisma.FieldRef<"FiscalConfig", 'String'>
+  readonly complement: Prisma.FieldRef<"FiscalConfig", 'String'>
+  readonly district: Prisma.FieldRef<"FiscalConfig", 'String'>
+  readonly city: Prisma.FieldRef<"FiscalConfig", 'String'>
+  readonly cityCode: Prisma.FieldRef<"FiscalConfig", 'String'>
+  readonly state: Prisma.FieldRef<"FiscalConfig", 'String'>
+  readonly zipCode: Prisma.FieldRef<"FiscalConfig", 'String'>
+  readonly phone: Prisma.FieldRef<"FiscalConfig", 'String'>
+  readonly email: Prisma.FieldRef<"FiscalConfig", 'String'>
+  readonly certificateType: Prisma.FieldRef<"FiscalConfig", 'String'>
+  readonly certificateName: Prisma.FieldRef<"FiscalConfig", 'String'>
+  readonly certificatePasswordEncrypted: Prisma.FieldRef<"FiscalConfig", 'String'>
+  readonly enableNfe: Prisma.FieldRef<"FiscalConfig", 'Boolean'>
+  readonly enableNfce: Prisma.FieldRef<"FiscalConfig", 'Boolean'>
+  readonly autoEmail: Prisma.FieldRef<"FiscalConfig", 'Boolean'>
+  readonly directTransmissionEnabled: Prisma.FieldRef<"FiscalConfig", 'Boolean'>
+  readonly accountantApprovedAt: Prisma.FieldRef<"FiscalConfig", 'DateTime'>
 }
     
 

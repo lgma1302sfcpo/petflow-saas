@@ -98,6 +98,35 @@ enum FiscalEnvironment {
   PRODUCTION
 }
 
+enum FiscalProviderType {
+  SANDBOX
+  DIRECT_SEFAZ_SP
+  NOT_CONFIGURED
+}
+
+enum FiscalDocumentType {
+  NFE
+  NFCE
+}
+
+enum FiscalDocumentStatus {
+  PROCESSING
+  CONTINGENCY_PENDING
+  AUTHORIZED
+  REJECTED
+  CANCELLED
+  ERROR
+}
+
+enum FiscalEventType {
+  ISSUE
+  QUERY
+  CANCEL
+  VOID_NUMBER
+  EMAIL
+  RETRY
+}
+
 model PlatformUser {
   id           String     @id @default(cuid())
   name         String
@@ -357,6 +386,16 @@ model Product {
   updatedAt    DateTime  @updatedAt
   deletedAt    DateTime?
 
+  // Campos usados apenas para emissão fiscal (NF-e/NFC-e). Um produto sem NCM/CFOP
+  // preenchidos não pode ser incluído em um documento fiscal.
+  ncm            String?
+  cfop           String?
+  cest           String?
+  fiscalItemType String   @default("GOOD")
+  serviceCode    String?
+  issRate        Decimal? @db.Decimal(5, 2)
+  fiscalApproved Boolean  @default(false)
+
   @@unique([tenantId, internalCode])
   @@unique([tenantId, sku])
   @@unique([tenantId, barcode])
@@ -420,6 +459,19 @@ model Customer {
   updatedAt      DateTime  @updatedAt
   deletedAt      DateTime?
 
+  // Campos usados apenas para emissão fiscal (Nota Fiscal Eletrônica exige destinatário
+  // identificado com endereço estruturado). Todos opcionais: um cliente sem esses dados
+  // simplesmente não pode ser destinatário de NF-e (NFC-e aceita consumidor não identificado).
+  stateRegistration String?
+  addressStreet     String?
+  addressNumber     String?
+  addressComplement String?
+  addressDistrict   String?
+  addressCity       String?
+  addressCityCode   String?
+  addressState      String?
+  addressZipCode    String?
+
   @@index([tenantId, branchId, fullName])
   @@index([tenantId, phone])
 }
@@ -457,6 +509,11 @@ model Sale {
   cancellationReason String?
   createdAt          DateTime   @default(now())
   cancelledAt        DateTime?
+
+  // Pendência de emissão fiscal apontada após a venda (ex.: falha na transmissão que precisa
+  // ser retomada ou dispensada manualmente).
+  fiscalPendingAt     DateTime?
+  fiscalPendingReason String?
 
   @@unique([tenantId, idempotencyKey])
   @@index([tenantId, branchId, createdAt])
@@ -639,4 +696,125 @@ model FiscalConfig {
   encryptedCertificate String?
   certificateExpiresAt DateTime?
   updatedAt            DateTime          @updatedAt
+
+  // Forma de transmissão efetiva usada pelo motor fiscal. `provider` acima é mantido por
+  // compatibilidade (rótulo livre já existente); `providerType` é o valor usado nas regras.
+  providerType FiscalProviderType @default(SANDBOX)
+
+  // Dados do emitente (loja/empresa), exigidos pela Secretaria da Fazenda em qualquer NF-e/NFC-e.
+  legalName             String?
+  tradeName             String?
+  cnpj                  String?
+  stateRegistration     String?
+  municipalRegistration String?
+  taxRegime             String?
+  cnae                  String?
+  street                String?
+  number                String?
+  complement            String?
+  district              String?
+  city                  String?
+  cityCode              String?
+  state                 String?
+  zipCode               String?
+  phone                 String?
+  email                 String?
+
+  // Certificado digital A1 (arquivo cifrado em `encryptedCertificate`) e a senha, também cifrada.
+  certificateType              String  @default("NONE")
+  certificateName              String?
+  certificatePasswordEncrypted String?
+
+  enableNfe                 Boolean   @default(false)
+  enableNfce                Boolean   @default(false)
+  autoEmail                 Boolean   @default(false)
+  directTransmissionEnabled Boolean   @default(false)
+  accountantApprovedAt      DateTime?
+}
+
+model FiscalSequence {
+  id          String             @id @default(cuid())
+  tenantId    String
+  branchId    String
+  type        FiscalDocumentType
+  environment FiscalEnvironment
+  series      Int
+  nextNumber  Int                @default(1)
+  updatedAt   DateTime           @updatedAt
+
+  @@unique([tenantId, branchId, type, environment, series])
+  @@index([tenantId, branchId, type])
+}
+
+model FiscalDocument {
+  id                     String               @id @default(cuid())
+  tenantId               String
+  branchId               String
+  saleId                 String
+  type                   FiscalDocumentType
+  environment            FiscalEnvironment
+  provider               FiscalProviderType
+  series                 Int
+  number                 Int
+  status                 FiscalDocumentStatus @default(PROCESSING)
+  accessKey              String?
+  protocol               String?
+  cancellationProtocol   String?
+  providerId             String?
+  rejectionCode          String?
+  rejectionReason        String?
+  xmlContent             String?              @db.Text
+  cancellationXmlContent String?              @db.Text
+  pdfContent             Bytes?
+  authorizedAt           DateTime?
+  cancelledAt            DateTime?
+  emailedAt              DateTime?
+  archivedAt             DateTime?
+  createdById            String?
+  createdAt              DateTime             @default(now())
+  updatedAt              DateTime             @updatedAt
+
+  @@unique([tenantId, saleId, type])
+  @@unique([tenantId, type, environment, series, number])
+  @@index([tenantId, createdAt])
+  @@index([tenantId, status])
+  @@index([tenantId, branchId])
+}
+
+model FiscalEvent {
+  id               String          @id @default(cuid())
+  tenantId         String
+  fiscalDocumentId String?
+  userId           String?
+  type             FiscalEventType
+  success          Boolean
+  message          String
+  details          Json?
+  createdAt        DateTime        @default(now())
+
+  @@index([tenantId, createdAt])
+  @@index([fiscalDocumentId, createdAt])
+}
+
+model FiscalNumberVoid {
+  id              String             @id @default(cuid())
+  tenantId        String
+  branchId        String
+  type            FiscalDocumentType
+  environment     FiscalEnvironment
+  provider        FiscalProviderType
+  series          Int
+  numberFrom      Int
+  numberTo        Int
+  reason          String
+  status          String
+  protocol        String?
+  rejectionCode   String?
+  rejectionReason String?
+  xmlContent      String?            @db.Text
+  createdById     String?
+  createdAt       DateTime           @default(now())
+
+  @@index([tenantId, createdAt])
+  @@index([tenantId, type, environment, series])
 }

@@ -54,6 +54,8 @@ export type SaleMinAggregateOutputType = {
   cancellationReason: string | null
   createdAt: Date | null
   cancelledAt: Date | null
+  fiscalPendingAt: Date | null
+  fiscalPendingReason: string | null
 }
 
 export type SaleMaxAggregateOutputType = {
@@ -72,6 +74,8 @@ export type SaleMaxAggregateOutputType = {
   cancellationReason: string | null
   createdAt: Date | null
   cancelledAt: Date | null
+  fiscalPendingAt: Date | null
+  fiscalPendingReason: string | null
 }
 
 export type SaleCountAggregateOutputType = {
@@ -90,6 +94,8 @@ export type SaleCountAggregateOutputType = {
   cancellationReason: number
   createdAt: number
   cancelledAt: number
+  fiscalPendingAt: number
+  fiscalPendingReason: number
   _all: number
 }
 
@@ -122,6 +128,8 @@ export type SaleMinAggregateInputType = {
   cancellationReason?: true
   createdAt?: true
   cancelledAt?: true
+  fiscalPendingAt?: true
+  fiscalPendingReason?: true
 }
 
 export type SaleMaxAggregateInputType = {
@@ -140,6 +148,8 @@ export type SaleMaxAggregateInputType = {
   cancellationReason?: true
   createdAt?: true
   cancelledAt?: true
+  fiscalPendingAt?: true
+  fiscalPendingReason?: true
 }
 
 export type SaleCountAggregateInputType = {
@@ -158,6 +168,8 @@ export type SaleCountAggregateInputType = {
   cancellationReason?: true
   createdAt?: true
   cancelledAt?: true
+  fiscalPendingAt?: true
+  fiscalPendingReason?: true
   _all?: true
 }
 
@@ -263,6 +275,8 @@ export type SaleGroupByOutputType = {
   cancellationReason: string | null
   createdAt: Date
   cancelledAt: Date | null
+  fiscalPendingAt: Date | null
+  fiscalPendingReason: string | null
   _count: SaleCountAggregateOutputType | null
   _avg: SaleAvgAggregateOutputType | null
   _sum: SaleSumAggregateOutputType | null
@@ -304,6 +318,8 @@ export type SaleWhereInput = {
   cancellationReason?: Prisma.StringNullableFilter<"Sale"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Sale"> | Date | string
   cancelledAt?: Prisma.DateTimeNullableFilter<"Sale"> | Date | string | null
+  fiscalPendingAt?: Prisma.DateTimeNullableFilter<"Sale"> | Date | string | null
+  fiscalPendingReason?: Prisma.StringNullableFilter<"Sale"> | string | null
 }
 
 export type SaleOrderByWithRelationInput = {
@@ -322,6 +338,8 @@ export type SaleOrderByWithRelationInput = {
   cancellationReason?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   cancelledAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  fiscalPendingAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  fiscalPendingReason?: Prisma.SortOrderInput | Prisma.SortOrder
 }
 
 export type SaleWhereUniqueInput = Prisma.AtLeast<{
@@ -344,6 +362,8 @@ export type SaleWhereUniqueInput = Prisma.AtLeast<{
   cancellationReason?: Prisma.StringNullableFilter<"Sale"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Sale"> | Date | string
   cancelledAt?: Prisma.DateTimeNullableFilter<"Sale"> | Date | string | null
+  fiscalPendingAt?: Prisma.DateTimeNullableFilter<"Sale"> | Date | string | null
+  fiscalPendingReason?: Prisma.StringNullableFilter<"Sale"> | string | null
 }, "id" | "tenantId_idempotencyKey">
 
 export type SaleOrderByWithAggregationInput = {
@@ -362,6 +382,8 @@ export type SaleOrderByWithAggregationInput = {
   cancellationReason?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   cancelledAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  fiscalPendingAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  fiscalPendingReason?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.SaleCountOrderByAggregateInput
   _avg?: Prisma.SaleAvgOrderByAggregateInput
   _max?: Prisma.SaleMaxOrderByAggregateInput
@@ -388,6 +410,8 @@ export type SaleScalarWhereWithAggregatesInput = {
   cancellationReason?: Prisma.StringNullableWithAggregatesFilter<"Sale"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Sale"> | Date | string
   cancelledAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Sale"> | Date | string | null
+  fiscalPendingAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Sale"> | Date | string | null
+  fiscalPendingReason?: Prisma.StringNullableWithAggregatesFilter<"Sale"> | string | null
 }
 
 export type SaleCreateInput = {
@@ -406,6 +430,8 @@ export type SaleCreateInput = {
   cancellationReason?: string | null
   createdAt?: Date | string
   cancelledAt?: Date | string | null
+  fiscalPendingAt?: Date | string | null
+  fiscalPendingReason?: string | null
 }
 
 export type SaleUncheckedCreateInput = {
@@ -424,6 +450,8 @@ export type SaleUncheckedCreateInput = {
   cancellationReason?: string | null
   createdAt?: Date | string
   cancelledAt?: Date | string | null
+  fiscalPendingAt?: Date | string | null
+  fiscalPendingReason?: string | null
 }
 
 export type SaleUpdateInput = {
@@ -442,6 +470,8 @@ export type SaleUpdateInput = {
   cancellationReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  fiscalPendingAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  fiscalPendingReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type SaleUncheckedUpdateInput = {
@@ -460,6 +490,8 @@ export type SaleUncheckedUpdateInput = {
   cancellationReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  fiscalPendingAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  fiscalPendingReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type SaleCreateManyInput = {
@@ -478,6 +510,8 @@ export type SaleCreateManyInput = {
   cancellationReason?: string | null
   createdAt?: Date | string
   cancelledAt?: Date | string | null
+  fiscalPendingAt?: Date | string | null
+  fiscalPendingReason?: string | null
 }
 
 export type SaleUpdateManyMutationInput = {
@@ -496,6 +530,8 @@ export type SaleUpdateManyMutationInput = {
   cancellationReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  fiscalPendingAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  fiscalPendingReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type SaleUncheckedUpdateManyInput = {
@@ -514,6 +550,8 @@ export type SaleUncheckedUpdateManyInput = {
   cancellationReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  fiscalPendingAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  fiscalPendingReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type SaleTenantIdIdempotencyKeyCompoundUniqueInput = {
@@ -537,6 +575,8 @@ export type SaleCountOrderByAggregateInput = {
   cancellationReason?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   cancelledAt?: Prisma.SortOrder
+  fiscalPendingAt?: Prisma.SortOrder
+  fiscalPendingReason?: Prisma.SortOrder
 }
 
 export type SaleAvgOrderByAggregateInput = {
@@ -561,6 +601,8 @@ export type SaleMaxOrderByAggregateInput = {
   cancellationReason?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   cancelledAt?: Prisma.SortOrder
+  fiscalPendingAt?: Prisma.SortOrder
+  fiscalPendingReason?: Prisma.SortOrder
 }
 
 export type SaleMinOrderByAggregateInput = {
@@ -579,6 +621,8 @@ export type SaleMinOrderByAggregateInput = {
   cancellationReason?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   cancelledAt?: Prisma.SortOrder
+  fiscalPendingAt?: Prisma.SortOrder
+  fiscalPendingReason?: Prisma.SortOrder
 }
 
 export type SaleSumOrderByAggregateInput = {
@@ -609,6 +653,8 @@ export type SaleSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   cancellationReason?: boolean
   createdAt?: boolean
   cancelledAt?: boolean
+  fiscalPendingAt?: boolean
+  fiscalPendingReason?: boolean
 }, ExtArgs["result"]["sale"]>
 
 export type SaleSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -627,6 +673,8 @@ export type SaleSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   cancellationReason?: boolean
   createdAt?: boolean
   cancelledAt?: boolean
+  fiscalPendingAt?: boolean
+  fiscalPendingReason?: boolean
 }, ExtArgs["result"]["sale"]>
 
 export type SaleSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -645,6 +693,8 @@ export type SaleSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   cancellationReason?: boolean
   createdAt?: boolean
   cancelledAt?: boolean
+  fiscalPendingAt?: boolean
+  fiscalPendingReason?: boolean
 }, ExtArgs["result"]["sale"]>
 
 export type SaleSelectScalar = {
@@ -663,9 +713,11 @@ export type SaleSelectScalar = {
   cancellationReason?: boolean
   createdAt?: boolean
   cancelledAt?: boolean
+  fiscalPendingAt?: boolean
+  fiscalPendingReason?: boolean
 }
 
-export type SaleOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "tenantId" | "branchId" | "cashSessionId" | "customerId" | "createdById" | "idempotencyKey" | "cancelledById" | "status" | "subtotal" | "discount" | "total" | "cancellationReason" | "createdAt" | "cancelledAt", ExtArgs["result"]["sale"]>
+export type SaleOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "tenantId" | "branchId" | "cashSessionId" | "customerId" | "createdById" | "idempotencyKey" | "cancelledById" | "status" | "subtotal" | "discount" | "total" | "cancellationReason" | "createdAt" | "cancelledAt" | "fiscalPendingAt" | "fiscalPendingReason", ExtArgs["result"]["sale"]>
 
 export type $SalePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Sale"
@@ -686,6 +738,8 @@ export type $SalePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     cancellationReason: string | null
     createdAt: Date
     cancelledAt: Date | null
+    fiscalPendingAt: Date | null
+    fiscalPendingReason: string | null
   }, ExtArgs["result"]["sale"]>
   composites: {}
 }
@@ -1124,6 +1178,8 @@ export interface SaleFieldRefs {
   readonly cancellationReason: Prisma.FieldRef<"Sale", 'String'>
   readonly createdAt: Prisma.FieldRef<"Sale", 'DateTime'>
   readonly cancelledAt: Prisma.FieldRef<"Sale", 'DateTime'>
+  readonly fiscalPendingAt: Prisma.FieldRef<"Sale", 'DateTime'>
+  readonly fiscalPendingReason: Prisma.FieldRef<"Sale", 'String'>
 }
     
 

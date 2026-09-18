@@ -187,3 +187,23 @@ export type ImportJob = Prisma.ImportJobModel
  * 
  */
 export type FiscalConfig = Prisma.FiscalConfigModel
+/**
+ * Model FiscalSequence
+ * 
+ */
+export type FiscalSequence = Prisma.FiscalSequenceModel
+/**
+ * Model FiscalDocument
+ * 
+ */
+export type FiscalDocument = Prisma.FiscalDocumentModel
+/**
+ * Model FiscalEvent
+ * 
+ */
+export type FiscalEvent = Prisma.FiscalEventModel
+/**
+ * Model FiscalNumberVoid
+ * 
+ */
+export type FiscalNumberVoid = Prisma.FiscalNumberVoidModel

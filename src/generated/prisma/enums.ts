@@ -136,3 +136,44 @@ export const FiscalEnvironment = {
 } as const
 
 export type FiscalEnvironment = (typeof FiscalEnvironment)[keyof typeof FiscalEnvironment]
+
+
+export const FiscalProviderType = {
+  SANDBOX: 'SANDBOX',
+  DIRECT_SEFAZ_SP: 'DIRECT_SEFAZ_SP',
+  NOT_CONFIGURED: 'NOT_CONFIGURED'
+} as const
+
+export type FiscalProviderType = (typeof FiscalProviderType)[keyof typeof FiscalProviderType]
+
+
+export const FiscalDocumentType = {
+  NFE: 'NFE',
+  NFCE: 'NFCE'
+} as const
+
+export type FiscalDocumentType = (typeof FiscalDocumentType)[keyof typeof FiscalDocumentType]
+
+
+export const FiscalDocumentStatus = {
+  PROCESSING: 'PROCESSING',
+  CONTINGENCY_PENDING: 'CONTINGENCY_PENDING',
+  AUTHORIZED: 'AUTHORIZED',
+  REJECTED: 'REJECTED',
+  CANCELLED: 'CANCELLED',
+  ERROR: 'ERROR'
+} as const
+
+export type FiscalDocumentStatus = (typeof FiscalDocumentStatus)[keyof typeof FiscalDocumentStatus]
+
+
+export const FiscalEventType = {
+  ISSUE: 'ISSUE',
+  QUERY: 'QUERY',
+  CANCEL: 'CANCEL',
+  VOID_NUMBER: 'VOID_NUMBER',
+  EMAIL: 'EMAIL',
+  RETRY: 'RETRY'
+} as const
+
+export type FiscalEventType = (typeof FiscalEventType)[keyof typeof FiscalEventType]

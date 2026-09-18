@@ -423,7 +423,11 @@ export const ModelName = {
   Appointment: 'Appointment',
   ServicePackage: 'ServicePackage',
   ImportJob: 'ImportJob',
-  FiscalConfig: 'FiscalConfig'
+  FiscalConfig: 'FiscalConfig',
+  FiscalSequence: 'FiscalSequence',
+  FiscalDocument: 'FiscalDocument',
+  FiscalEvent: 'FiscalEvent',
+  FiscalNumberVoid: 'FiscalNumberVoid'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -439,7 +443,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "platformUser" | "plan" | "tenant" | "subscription" | "branch" | "user" | "userBranch" | "role" | "permission" | "rolePermission" | "tenantSetting" | "branchSetting" | "tenantModule" | "impersonationSession" | "auditLog" | "product" | "productBranch" | "stockBalance" | "stockMovement" | "customer" | "pet" | "sale" | "saleItem" | "salePayment" | "cashSession" | "cashMovement" | "financialCategory" | "financialEntry" | "professional" | "groomingService" | "appointment" | "servicePackage" | "importJob" | "fiscalConfig"
+    modelProps: "platformUser" | "plan" | "tenant" | "subscription" | "branch" | "user" | "userBranch" | "role" | "permission" | "rolePermission" | "tenantSetting" | "branchSetting" | "tenantModule" | "impersonationSession" | "auditLog" | "product" | "productBranch" | "stockBalance" | "stockMovement" | "customer" | "pet" | "sale" | "saleItem" | "salePayment" | "cashSession" | "cashMovement" | "financialCategory" | "financialEntry" | "professional" | "groomingService" | "appointment" | "servicePackage" | "importJob" | "fiscalConfig" | "fiscalSequence" | "fiscalDocument" | "fiscalEvent" | "fiscalNumberVoid"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -2959,6 +2963,302 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    FiscalSequence: {
+      payload: Prisma.$FiscalSequencePayload<ExtArgs>
+      fields: Prisma.FiscalSequenceFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.FiscalSequenceFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FiscalSequencePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.FiscalSequenceFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FiscalSequencePayload>
+        }
+        findFirst: {
+          args: Prisma.FiscalSequenceFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FiscalSequencePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.FiscalSequenceFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FiscalSequencePayload>
+        }
+        findMany: {
+          args: Prisma.FiscalSequenceFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FiscalSequencePayload>[]
+        }
+        create: {
+          args: Prisma.FiscalSequenceCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FiscalSequencePayload>
+        }
+        createMany: {
+          args: Prisma.FiscalSequenceCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.FiscalSequenceCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FiscalSequencePayload>[]
+        }
+        delete: {
+          args: Prisma.FiscalSequenceDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FiscalSequencePayload>
+        }
+        update: {
+          args: Prisma.FiscalSequenceUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FiscalSequencePayload>
+        }
+        deleteMany: {
+          args: Prisma.FiscalSequenceDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.FiscalSequenceUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.FiscalSequenceUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FiscalSequencePayload>[]
+        }
+        upsert: {
+          args: Prisma.FiscalSequenceUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FiscalSequencePayload>
+        }
+        aggregate: {
+          args: Prisma.FiscalSequenceAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateFiscalSequence>
+        }
+        groupBy: {
+          args: Prisma.FiscalSequenceGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.FiscalSequenceGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.FiscalSequenceCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.FiscalSequenceCountAggregateOutputType> | number
+        }
+      }
+    }
+    FiscalDocument: {
+      payload: Prisma.$FiscalDocumentPayload<ExtArgs>
+      fields: Prisma.FiscalDocumentFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.FiscalDocumentFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FiscalDocumentPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.FiscalDocumentFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FiscalDocumentPayload>
+        }
+        findFirst: {
+          args: Prisma.FiscalDocumentFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FiscalDocumentPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.FiscalDocumentFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FiscalDocumentPayload>
+        }
+        findMany: {
+          args: Prisma.FiscalDocumentFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FiscalDocumentPayload>[]
+        }
+        create: {
+          args: Prisma.FiscalDocumentCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FiscalDocumentPayload>
+        }
+        createMany: {
+          args: Prisma.FiscalDocumentCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.FiscalDocumentCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FiscalDocumentPayload>[]
+        }
+        delete: {
+          args: Prisma.FiscalDocumentDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FiscalDocumentPayload>
+        }
+        update: {
+          args: Prisma.FiscalDocumentUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FiscalDocumentPayload>
+        }
+        deleteMany: {
+          args: Prisma.FiscalDocumentDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.FiscalDocumentUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.FiscalDocumentUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FiscalDocumentPayload>[]
+        }
+        upsert: {
+          args: Prisma.FiscalDocumentUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FiscalDocumentPayload>
+        }
+        aggregate: {
+          args: Prisma.FiscalDocumentAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateFiscalDocument>
+        }
+        groupBy: {
+          args: Prisma.FiscalDocumentGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.FiscalDocumentGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.FiscalDocumentCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.FiscalDocumentCountAggregateOutputType> | number
+        }
+      }
+    }
+    FiscalEvent: {
+      payload: Prisma.$FiscalEventPayload<ExtArgs>
+      fields: Prisma.FiscalEventFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.FiscalEventFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FiscalEventPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.FiscalEventFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FiscalEventPayload>
+        }
+        findFirst: {
+          args: Prisma.FiscalEventFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FiscalEventPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.FiscalEventFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FiscalEventPayload>
+        }
+        findMany: {
+          args: Prisma.FiscalEventFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FiscalEventPayload>[]
+        }
+        create: {
+          args: Prisma.FiscalEventCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FiscalEventPayload>
+        }
+        createMany: {
+          args: Prisma.FiscalEventCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.FiscalEventCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FiscalEventPayload>[]
+        }
+        delete: {
+          args: Prisma.FiscalEventDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FiscalEventPayload>
+        }
+        update: {
+          args: Prisma.FiscalEventUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FiscalEventPayload>
+        }
+        deleteMany: {
+          args: Prisma.FiscalEventDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.FiscalEventUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.FiscalEventUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FiscalEventPayload>[]
+        }
+        upsert: {
+          args: Prisma.FiscalEventUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FiscalEventPayload>
+        }
+        aggregate: {
+          args: Prisma.FiscalEventAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateFiscalEvent>
+        }
+        groupBy: {
+          args: Prisma.FiscalEventGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.FiscalEventGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.FiscalEventCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.FiscalEventCountAggregateOutputType> | number
+        }
+      }
+    }
+    FiscalNumberVoid: {
+      payload: Prisma.$FiscalNumberVoidPayload<ExtArgs>
+      fields: Prisma.FiscalNumberVoidFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.FiscalNumberVoidFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FiscalNumberVoidPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.FiscalNumberVoidFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FiscalNumberVoidPayload>
+        }
+        findFirst: {
+          args: Prisma.FiscalNumberVoidFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FiscalNumberVoidPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.FiscalNumberVoidFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FiscalNumberVoidPayload>
+        }
+        findMany: {
+          args: Prisma.FiscalNumberVoidFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FiscalNumberVoidPayload>[]
+        }
+        create: {
+          args: Prisma.FiscalNumberVoidCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FiscalNumberVoidPayload>
+        }
+        createMany: {
+          args: Prisma.FiscalNumberVoidCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.FiscalNumberVoidCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FiscalNumberVoidPayload>[]
+        }
+        delete: {
+          args: Prisma.FiscalNumberVoidDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FiscalNumberVoidPayload>
+        }
+        update: {
+          args: Prisma.FiscalNumberVoidUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FiscalNumberVoidPayload>
+        }
+        deleteMany: {
+          args: Prisma.FiscalNumberVoidDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.FiscalNumberVoidUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.FiscalNumberVoidUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FiscalNumberVoidPayload>[]
+        }
+        upsert: {
+          args: Prisma.FiscalNumberVoidUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FiscalNumberVoidPayload>
+        }
+        aggregate: {
+          args: Prisma.FiscalNumberVoidAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateFiscalNumberVoid>
+        }
+        groupBy: {
+          args: Prisma.FiscalNumberVoidGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.FiscalNumberVoidGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.FiscalNumberVoidCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.FiscalNumberVoidCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -3236,7 +3536,14 @@ export const ProductScalarFieldEnum = {
   location: 'location',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  deletedAt: 'deletedAt'
+  deletedAt: 'deletedAt',
+  ncm: 'ncm',
+  cfop: 'cfop',
+  cest: 'cest',
+  fiscalItemType: 'fiscalItemType',
+  serviceCode: 'serviceCode',
+  issRate: 'issRate',
+  fiscalApproved: 'fiscalApproved'
 } as const
 
 export type ProductScalarFieldEnum = (typeof ProductScalarFieldEnum)[keyof typeof ProductScalarFieldEnum]
@@ -3298,7 +3605,16 @@ export const CustomerScalarFieldEnum = {
   lastPurchaseAt: 'lastPurchaseAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  deletedAt: 'deletedAt'
+  deletedAt: 'deletedAt',
+  stateRegistration: 'stateRegistration',
+  addressStreet: 'addressStreet',
+  addressNumber: 'addressNumber',
+  addressComplement: 'addressComplement',
+  addressDistrict: 'addressDistrict',
+  addressCity: 'addressCity',
+  addressCityCode: 'addressCityCode',
+  addressState: 'addressState',
+  addressZipCode: 'addressZipCode'
 } as const
 
 export type CustomerScalarFieldEnum = (typeof CustomerScalarFieldEnum)[keyof typeof CustomerScalarFieldEnum]
@@ -3337,7 +3653,9 @@ export const SaleScalarFieldEnum = {
   total: 'total',
   cancellationReason: 'cancellationReason',
   createdAt: 'createdAt',
-  cancelledAt: 'cancelledAt'
+  cancelledAt: 'cancelledAt',
+  fiscalPendingAt: 'fiscalPendingAt',
+  fiscalPendingReason: 'fiscalPendingReason'
 } as const
 
 export type SaleScalarFieldEnum = (typeof SaleScalarFieldEnum)[keyof typeof SaleScalarFieldEnum]
@@ -3529,10 +3847,120 @@ export const FiscalConfigScalarFieldEnum = {
   provider: 'provider',
   encryptedCertificate: 'encryptedCertificate',
   certificateExpiresAt: 'certificateExpiresAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  providerType: 'providerType',
+  legalName: 'legalName',
+  tradeName: 'tradeName',
+  cnpj: 'cnpj',
+  stateRegistration: 'stateRegistration',
+  municipalRegistration: 'municipalRegistration',
+  taxRegime: 'taxRegime',
+  cnae: 'cnae',
+  street: 'street',
+  number: 'number',
+  complement: 'complement',
+  district: 'district',
+  city: 'city',
+  cityCode: 'cityCode',
+  state: 'state',
+  zipCode: 'zipCode',
+  phone: 'phone',
+  email: 'email',
+  certificateType: 'certificateType',
+  certificateName: 'certificateName',
+  certificatePasswordEncrypted: 'certificatePasswordEncrypted',
+  enableNfe: 'enableNfe',
+  enableNfce: 'enableNfce',
+  autoEmail: 'autoEmail',
+  directTransmissionEnabled: 'directTransmissionEnabled',
+  accountantApprovedAt: 'accountantApprovedAt'
 } as const
 
 export type FiscalConfigScalarFieldEnum = (typeof FiscalConfigScalarFieldEnum)[keyof typeof FiscalConfigScalarFieldEnum]
+
+
+export const FiscalSequenceScalarFieldEnum = {
+  id: 'id',
+  tenantId: 'tenantId',
+  branchId: 'branchId',
+  type: 'type',
+  environment: 'environment',
+  series: 'series',
+  nextNumber: 'nextNumber',
+  updatedAt: 'updatedAt'
+} as const
+
+export type FiscalSequenceScalarFieldEnum = (typeof FiscalSequenceScalarFieldEnum)[keyof typeof FiscalSequenceScalarFieldEnum]
+
+
+export const FiscalDocumentScalarFieldEnum = {
+  id: 'id',
+  tenantId: 'tenantId',
+  branchId: 'branchId',
+  saleId: 'saleId',
+  type: 'type',
+  environment: 'environment',
+  provider: 'provider',
+  series: 'series',
+  number: 'number',
+  status: 'status',
+  accessKey: 'accessKey',
+  protocol: 'protocol',
+  cancellationProtocol: 'cancellationProtocol',
+  providerId: 'providerId',
+  rejectionCode: 'rejectionCode',
+  rejectionReason: 'rejectionReason',
+  xmlContent: 'xmlContent',
+  cancellationXmlContent: 'cancellationXmlContent',
+  pdfContent: 'pdfContent',
+  authorizedAt: 'authorizedAt',
+  cancelledAt: 'cancelledAt',
+  emailedAt: 'emailedAt',
+  archivedAt: 'archivedAt',
+  createdById: 'createdById',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type FiscalDocumentScalarFieldEnum = (typeof FiscalDocumentScalarFieldEnum)[keyof typeof FiscalDocumentScalarFieldEnum]
+
+
+export const FiscalEventScalarFieldEnum = {
+  id: 'id',
+  tenantId: 'tenantId',
+  fiscalDocumentId: 'fiscalDocumentId',
+  userId: 'userId',
+  type: 'type',
+  success: 'success',
+  message: 'message',
+  details: 'details',
+  createdAt: 'createdAt'
+} as const
+
+export type FiscalEventScalarFieldEnum = (typeof FiscalEventScalarFieldEnum)[keyof typeof FiscalEventScalarFieldEnum]
+
+
+export const FiscalNumberVoidScalarFieldEnum = {
+  id: 'id',
+  tenantId: 'tenantId',
+  branchId: 'branchId',
+  type: 'type',
+  environment: 'environment',
+  provider: 'provider',
+  series: 'series',
+  numberFrom: 'numberFrom',
+  numberTo: 'numberTo',
+  reason: 'reason',
+  status: 'status',
+  protocol: 'protocol',
+  rejectionCode: 'rejectionCode',
+  rejectionReason: 'rejectionReason',
+  xmlContent: 'xmlContent',
+  createdById: 'createdById',
+  createdAt: 'createdAt'
+} as const
+
+export type FiscalNumberVoidScalarFieldEnum = (typeof FiscalNumberVoidScalarFieldEnum)[keyof typeof FiscalNumberVoidScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -3849,6 +4277,76 @@ export type ListEnumFiscalEnvironmentFieldRefInput<$PrismaModel> = FieldRefInput
 
 
 /**
+ * Reference to a field of type 'FiscalProviderType'
+ */
+export type EnumFiscalProviderTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'FiscalProviderType'>
+    
+
+
+/**
+ * Reference to a field of type 'FiscalProviderType[]'
+ */
+export type ListEnumFiscalProviderTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'FiscalProviderType[]'>
+    
+
+
+/**
+ * Reference to a field of type 'FiscalDocumentType'
+ */
+export type EnumFiscalDocumentTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'FiscalDocumentType'>
+    
+
+
+/**
+ * Reference to a field of type 'FiscalDocumentType[]'
+ */
+export type ListEnumFiscalDocumentTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'FiscalDocumentType[]'>
+    
+
+
+/**
+ * Reference to a field of type 'FiscalDocumentStatus'
+ */
+export type EnumFiscalDocumentStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'FiscalDocumentStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'FiscalDocumentStatus[]'
+ */
+export type ListEnumFiscalDocumentStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'FiscalDocumentStatus[]'>
+    
+
+
+/**
+ * Reference to a field of type 'Bytes'
+ */
+export type BytesFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Bytes'>
+    
+
+
+/**
+ * Reference to a field of type 'Bytes[]'
+ */
+export type ListBytesFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Bytes[]'>
+    
+
+
+/**
+ * Reference to a field of type 'FiscalEventType'
+ */
+export type EnumFiscalEventTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'FiscalEventType'>
+    
+
+
+/**
+ * Reference to a field of type 'FiscalEventType[]'
+ */
+export type ListEnumFiscalEventTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'FiscalEventType[]'>
+    
+
+
+/**
  * Reference to a field of type 'Float'
  */
 export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -3982,6 +4480,10 @@ export type GlobalOmitConfig = {
   servicePackage?: Prisma.ServicePackageOmit
   importJob?: Prisma.ImportJobOmit
   fiscalConfig?: Prisma.FiscalConfigOmit
+  fiscalSequence?: Prisma.FiscalSequenceOmit
+  fiscalDocument?: Prisma.FiscalDocumentOmit
+  fiscalEvent?: Prisma.FiscalEventOmit
+  fiscalNumberVoid?: Prisma.FiscalNumberVoidOmit
 }
 
 /* Types for Logging */

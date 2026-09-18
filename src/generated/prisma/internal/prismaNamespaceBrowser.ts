@@ -82,7 +82,11 @@ export const ModelName = {
   Appointment: 'Appointment',
   ServicePackage: 'ServicePackage',
   ImportJob: 'ImportJob',
-  FiscalConfig: 'FiscalConfig'
+  FiscalConfig: 'FiscalConfig',
+  FiscalSequence: 'FiscalSequence',
+  FiscalDocument: 'FiscalDocument',
+  FiscalEvent: 'FiscalEvent',
+  FiscalNumberVoid: 'FiscalNumberVoid'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -339,7 +343,14 @@ export const ProductScalarFieldEnum = {
   location: 'location',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  deletedAt: 'deletedAt'
+  deletedAt: 'deletedAt',
+  ncm: 'ncm',
+  cfop: 'cfop',
+  cest: 'cest',
+  fiscalItemType: 'fiscalItemType',
+  serviceCode: 'serviceCode',
+  issRate: 'issRate',
+  fiscalApproved: 'fiscalApproved'
 } as const
 
 export type ProductScalarFieldEnum = (typeof ProductScalarFieldEnum)[keyof typeof ProductScalarFieldEnum]
@@ -401,7 +412,16 @@ export const CustomerScalarFieldEnum = {
   lastPurchaseAt: 'lastPurchaseAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  deletedAt: 'deletedAt'
+  deletedAt: 'deletedAt',
+  stateRegistration: 'stateRegistration',
+  addressStreet: 'addressStreet',
+  addressNumber: 'addressNumber',
+  addressComplement: 'addressComplement',
+  addressDistrict: 'addressDistrict',
+  addressCity: 'addressCity',
+  addressCityCode: 'addressCityCode',
+  addressState: 'addressState',
+  addressZipCode: 'addressZipCode'
 } as const
 
 export type CustomerScalarFieldEnum = (typeof CustomerScalarFieldEnum)[keyof typeof CustomerScalarFieldEnum]
@@ -440,7 +460,9 @@ export const SaleScalarFieldEnum = {
   total: 'total',
   cancellationReason: 'cancellationReason',
   createdAt: 'createdAt',
-  cancelledAt: 'cancelledAt'
+  cancelledAt: 'cancelledAt',
+  fiscalPendingAt: 'fiscalPendingAt',
+  fiscalPendingReason: 'fiscalPendingReason'
 } as const
 
 export type SaleScalarFieldEnum = (typeof SaleScalarFieldEnum)[keyof typeof SaleScalarFieldEnum]
@@ -632,10 +654,120 @@ export const FiscalConfigScalarFieldEnum = {
   provider: 'provider',
   encryptedCertificate: 'encryptedCertificate',
   certificateExpiresAt: 'certificateExpiresAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  providerType: 'providerType',
+  legalName: 'legalName',
+  tradeName: 'tradeName',
+  cnpj: 'cnpj',
+  stateRegistration: 'stateRegistration',
+  municipalRegistration: 'municipalRegistration',
+  taxRegime: 'taxRegime',
+  cnae: 'cnae',
+  street: 'street',
+  number: 'number',
+  complement: 'complement',
+  district: 'district',
+  city: 'city',
+  cityCode: 'cityCode',
+  state: 'state',
+  zipCode: 'zipCode',
+  phone: 'phone',
+  email: 'email',
+  certificateType: 'certificateType',
+  certificateName: 'certificateName',
+  certificatePasswordEncrypted: 'certificatePasswordEncrypted',
+  enableNfe: 'enableNfe',
+  enableNfce: 'enableNfce',
+  autoEmail: 'autoEmail',
+  directTransmissionEnabled: 'directTransmissionEnabled',
+  accountantApprovedAt: 'accountantApprovedAt'
 } as const
 
 export type FiscalConfigScalarFieldEnum = (typeof FiscalConfigScalarFieldEnum)[keyof typeof FiscalConfigScalarFieldEnum]
+
+
+export const FiscalSequenceScalarFieldEnum = {
+  id: 'id',
+  tenantId: 'tenantId',
+  branchId: 'branchId',
+  type: 'type',
+  environment: 'environment',
+  series: 'series',
+  nextNumber: 'nextNumber',
+  updatedAt: 'updatedAt'
+} as const
+
+export type FiscalSequenceScalarFieldEnum = (typeof FiscalSequenceScalarFieldEnum)[keyof typeof FiscalSequenceScalarFieldEnum]
+
+
+export const FiscalDocumentScalarFieldEnum = {
+  id: 'id',
+  tenantId: 'tenantId',
+  branchId: 'branchId',
+  saleId: 'saleId',
+  type: 'type',
+  environment: 'environment',
+  provider: 'provider',
+  series: 'series',
+  number: 'number',
+  status: 'status',
+  accessKey: 'accessKey',
+  protocol: 'protocol',
+  cancellationProtocol: 'cancellationProtocol',
+  providerId: 'providerId',
+  rejectionCode: 'rejectionCode',
+  rejectionReason: 'rejectionReason',
+  xmlContent: 'xmlContent',
+  cancellationXmlContent: 'cancellationXmlContent',
+  pdfContent: 'pdfContent',
+  authorizedAt: 'authorizedAt',
+  cancelledAt: 'cancelledAt',
+  emailedAt: 'emailedAt',
+  archivedAt: 'archivedAt',
+  createdById: 'createdById',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type FiscalDocumentScalarFieldEnum = (typeof FiscalDocumentScalarFieldEnum)[keyof typeof FiscalDocumentScalarFieldEnum]
+
+
+export const FiscalEventScalarFieldEnum = {
+  id: 'id',
+  tenantId: 'tenantId',
+  fiscalDocumentId: 'fiscalDocumentId',
+  userId: 'userId',
+  type: 'type',
+  success: 'success',
+  message: 'message',
+  details: 'details',
+  createdAt: 'createdAt'
+} as const
+
+export type FiscalEventScalarFieldEnum = (typeof FiscalEventScalarFieldEnum)[keyof typeof FiscalEventScalarFieldEnum]
+
+
+export const FiscalNumberVoidScalarFieldEnum = {
+  id: 'id',
+  tenantId: 'tenantId',
+  branchId: 'branchId',
+  type: 'type',
+  environment: 'environment',
+  provider: 'provider',
+  series: 'series',
+  numberFrom: 'numberFrom',
+  numberTo: 'numberTo',
+  reason: 'reason',
+  status: 'status',
+  protocol: 'protocol',
+  rejectionCode: 'rejectionCode',
+  rejectionReason: 'rejectionReason',
+  xmlContent: 'xmlContent',
+  createdById: 'createdById',
+  createdAt: 'createdAt'
+} as const
+
+export type FiscalNumberVoidScalarFieldEnum = (typeof FiscalNumberVoidScalarFieldEnum)[keyof typeof FiscalNumberVoidScalarFieldEnum]
 
 
 export const SortOrder = {

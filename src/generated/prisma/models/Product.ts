@@ -30,12 +30,14 @@ export type ProductAvgAggregateOutputType = {
   salePrice: runtime.Decimal | null
   costPrice: runtime.Decimal | null
   minimumStock: runtime.Decimal | null
+  issRate: runtime.Decimal | null
 }
 
 export type ProductSumAggregateOutputType = {
   salePrice: runtime.Decimal | null
   costPrice: runtime.Decimal | null
   minimumStock: runtime.Decimal | null
+  issRate: runtime.Decimal | null
 }
 
 export type ProductMinAggregateOutputType = {
@@ -59,6 +61,13 @@ export type ProductMinAggregateOutputType = {
   createdAt: Date | null
   updatedAt: Date | null
   deletedAt: Date | null
+  ncm: string | null
+  cfop: string | null
+  cest: string | null
+  fiscalItemType: string | null
+  serviceCode: string | null
+  issRate: runtime.Decimal | null
+  fiscalApproved: boolean | null
 }
 
 export type ProductMaxAggregateOutputType = {
@@ -82,6 +91,13 @@ export type ProductMaxAggregateOutputType = {
   createdAt: Date | null
   updatedAt: Date | null
   deletedAt: Date | null
+  ncm: string | null
+  cfop: string | null
+  cest: string | null
+  fiscalItemType: string | null
+  serviceCode: string | null
+  issRate: runtime.Decimal | null
+  fiscalApproved: boolean | null
 }
 
 export type ProductCountAggregateOutputType = {
@@ -105,6 +121,13 @@ export type ProductCountAggregateOutputType = {
   createdAt: number
   updatedAt: number
   deletedAt: number
+  ncm: number
+  cfop: number
+  cest: number
+  fiscalItemType: number
+  serviceCode: number
+  issRate: number
+  fiscalApproved: number
   _all: number
 }
 
@@ -113,12 +136,14 @@ export type ProductAvgAggregateInputType = {
   salePrice?: true
   costPrice?: true
   minimumStock?: true
+  issRate?: true
 }
 
 export type ProductSumAggregateInputType = {
   salePrice?: true
   costPrice?: true
   minimumStock?: true
+  issRate?: true
 }
 
 export type ProductMinAggregateInputType = {
@@ -142,6 +167,13 @@ export type ProductMinAggregateInputType = {
   createdAt?: true
   updatedAt?: true
   deletedAt?: true
+  ncm?: true
+  cfop?: true
+  cest?: true
+  fiscalItemType?: true
+  serviceCode?: true
+  issRate?: true
+  fiscalApproved?: true
 }
 
 export type ProductMaxAggregateInputType = {
@@ -165,6 +197,13 @@ export type ProductMaxAggregateInputType = {
   createdAt?: true
   updatedAt?: true
   deletedAt?: true
+  ncm?: true
+  cfop?: true
+  cest?: true
+  fiscalItemType?: true
+  serviceCode?: true
+  issRate?: true
+  fiscalApproved?: true
 }
 
 export type ProductCountAggregateInputType = {
@@ -188,6 +227,13 @@ export type ProductCountAggregateInputType = {
   createdAt?: true
   updatedAt?: true
   deletedAt?: true
+  ncm?: true
+  cfop?: true
+  cest?: true
+  fiscalItemType?: true
+  serviceCode?: true
+  issRate?: true
+  fiscalApproved?: true
   _all?: true
 }
 
@@ -298,6 +344,13 @@ export type ProductGroupByOutputType = {
   createdAt: Date
   updatedAt: Date
   deletedAt: Date | null
+  ncm: string | null
+  cfop: string | null
+  cest: string | null
+  fiscalItemType: string
+  serviceCode: string | null
+  issRate: runtime.Decimal | null
+  fiscalApproved: boolean
   _count: ProductCountAggregateOutputType | null
   _avg: ProductAvgAggregateOutputType | null
   _sum: ProductSumAggregateOutputType | null
@@ -344,6 +397,13 @@ export type ProductWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"Product"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Product"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"Product"> | Date | string | null
+  ncm?: Prisma.StringNullableFilter<"Product"> | string | null
+  cfop?: Prisma.StringNullableFilter<"Product"> | string | null
+  cest?: Prisma.StringNullableFilter<"Product"> | string | null
+  fiscalItemType?: Prisma.StringFilter<"Product"> | string
+  serviceCode?: Prisma.StringNullableFilter<"Product"> | string | null
+  issRate?: Prisma.DecimalNullableFilter<"Product"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  fiscalApproved?: Prisma.BoolFilter<"Product"> | boolean
 }
 
 export type ProductOrderByWithRelationInput = {
@@ -367,6 +427,13 @@ export type ProductOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  ncm?: Prisma.SortOrderInput | Prisma.SortOrder
+  cfop?: Prisma.SortOrderInput | Prisma.SortOrder
+  cest?: Prisma.SortOrderInput | Prisma.SortOrder
+  fiscalItemType?: Prisma.SortOrder
+  serviceCode?: Prisma.SortOrderInput | Prisma.SortOrder
+  issRate?: Prisma.SortOrderInput | Prisma.SortOrder
+  fiscalApproved?: Prisma.SortOrder
 }
 
 export type ProductWhereUniqueInput = Prisma.AtLeast<{
@@ -396,6 +463,13 @@ export type ProductWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"Product"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Product"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"Product"> | Date | string | null
+  ncm?: Prisma.StringNullableFilter<"Product"> | string | null
+  cfop?: Prisma.StringNullableFilter<"Product"> | string | null
+  cest?: Prisma.StringNullableFilter<"Product"> | string | null
+  fiscalItemType?: Prisma.StringFilter<"Product"> | string
+  serviceCode?: Prisma.StringNullableFilter<"Product"> | string | null
+  issRate?: Prisma.DecimalNullableFilter<"Product"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  fiscalApproved?: Prisma.BoolFilter<"Product"> | boolean
 }, "id" | "tenantId_internalCode" | "tenantId_sku" | "tenantId_barcode">
 
 export type ProductOrderByWithAggregationInput = {
@@ -419,6 +493,13 @@ export type ProductOrderByWithAggregationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  ncm?: Prisma.SortOrderInput | Prisma.SortOrder
+  cfop?: Prisma.SortOrderInput | Prisma.SortOrder
+  cest?: Prisma.SortOrderInput | Prisma.SortOrder
+  fiscalItemType?: Prisma.SortOrder
+  serviceCode?: Prisma.SortOrderInput | Prisma.SortOrder
+  issRate?: Prisma.SortOrderInput | Prisma.SortOrder
+  fiscalApproved?: Prisma.SortOrder
   _count?: Prisma.ProductCountOrderByAggregateInput
   _avg?: Prisma.ProductAvgOrderByAggregateInput
   _max?: Prisma.ProductMaxOrderByAggregateInput
@@ -450,6 +531,13 @@ export type ProductScalarWhereWithAggregatesInput = {
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Product"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Product"> | Date | string
   deletedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Product"> | Date | string | null
+  ncm?: Prisma.StringNullableWithAggregatesFilter<"Product"> | string | null
+  cfop?: Prisma.StringNullableWithAggregatesFilter<"Product"> | string | null
+  cest?: Prisma.StringNullableWithAggregatesFilter<"Product"> | string | null
+  fiscalItemType?: Prisma.StringWithAggregatesFilter<"Product"> | string
+  serviceCode?: Prisma.StringNullableWithAggregatesFilter<"Product"> | string | null
+  issRate?: Prisma.DecimalNullableWithAggregatesFilter<"Product"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  fiscalApproved?: Prisma.BoolWithAggregatesFilter<"Product"> | boolean
 }
 
 export type ProductCreateInput = {
@@ -473,6 +561,13 @@ export type ProductCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
+  ncm?: string | null
+  cfop?: string | null
+  cest?: string | null
+  fiscalItemType?: string
+  serviceCode?: string | null
+  issRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  fiscalApproved?: boolean
 }
 
 export type ProductUncheckedCreateInput = {
@@ -496,6 +591,13 @@ export type ProductUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
+  ncm?: string | null
+  cfop?: string | null
+  cest?: string | null
+  fiscalItemType?: string
+  serviceCode?: string | null
+  issRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  fiscalApproved?: boolean
 }
 
 export type ProductUpdateInput = {
@@ -519,6 +621,13 @@ export type ProductUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  ncm?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cfop?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cest?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalItemType?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  issRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  fiscalApproved?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type ProductUncheckedUpdateInput = {
@@ -542,6 +651,13 @@ export type ProductUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  ncm?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cfop?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cest?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalItemType?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  issRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  fiscalApproved?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type ProductCreateManyInput = {
@@ -565,6 +681,13 @@ export type ProductCreateManyInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
+  ncm?: string | null
+  cfop?: string | null
+  cest?: string | null
+  fiscalItemType?: string
+  serviceCode?: string | null
+  issRate?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  fiscalApproved?: boolean
 }
 
 export type ProductUpdateManyMutationInput = {
@@ -588,6 +711,13 @@ export type ProductUpdateManyMutationInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  ncm?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cfop?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cest?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalItemType?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  issRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  fiscalApproved?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type ProductUncheckedUpdateManyInput = {
@@ -611,6 +741,13 @@ export type ProductUncheckedUpdateManyInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  ncm?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cfop?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cest?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fiscalItemType?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  issRate?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  fiscalApproved?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type ProductTenantIdInternalCodeCompoundUniqueInput = {
@@ -649,12 +786,20 @@ export type ProductCountOrderByAggregateInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
+  ncm?: Prisma.SortOrder
+  cfop?: Prisma.SortOrder
+  cest?: Prisma.SortOrder
+  fiscalItemType?: Prisma.SortOrder
+  serviceCode?: Prisma.SortOrder
+  issRate?: Prisma.SortOrder
+  fiscalApproved?: Prisma.SortOrder
 }
 
 export type ProductAvgOrderByAggregateInput = {
   salePrice?: Prisma.SortOrder
   costPrice?: Prisma.SortOrder
   minimumStock?: Prisma.SortOrder
+  issRate?: Prisma.SortOrder
 }
 
 export type ProductMaxOrderByAggregateInput = {
@@ -678,6 +823,13 @@ export type ProductMaxOrderByAggregateInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
+  ncm?: Prisma.SortOrder
+  cfop?: Prisma.SortOrder
+  cest?: Prisma.SortOrder
+  fiscalItemType?: Prisma.SortOrder
+  serviceCode?: Prisma.SortOrder
+  issRate?: Prisma.SortOrder
+  fiscalApproved?: Prisma.SortOrder
 }
 
 export type ProductMinOrderByAggregateInput = {
@@ -701,16 +853,32 @@ export type ProductMinOrderByAggregateInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
+  ncm?: Prisma.SortOrder
+  cfop?: Prisma.SortOrder
+  cest?: Prisma.SortOrder
+  fiscalItemType?: Prisma.SortOrder
+  serviceCode?: Prisma.SortOrder
+  issRate?: Prisma.SortOrder
+  fiscalApproved?: Prisma.SortOrder
 }
 
 export type ProductSumOrderByAggregateInput = {
   salePrice?: Prisma.SortOrder
   costPrice?: Prisma.SortOrder
   minimumStock?: Prisma.SortOrder
+  issRate?: Prisma.SortOrder
 }
 
 export type DecimalFieldUpdateOperationsInput = {
   set?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  increment?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  decrement?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  multiply?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  divide?: runtime.Decimal | runtime.DecimalJsLike | number | string
+}
+
+export type NullableDecimalFieldUpdateOperationsInput = {
+  set?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   increment?: runtime.Decimal | runtime.DecimalJsLike | number | string
   decrement?: runtime.Decimal | runtime.DecimalJsLike | number | string
   multiply?: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -740,6 +908,13 @@ export type ProductSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
+  ncm?: boolean
+  cfop?: boolean
+  cest?: boolean
+  fiscalItemType?: boolean
+  serviceCode?: boolean
+  issRate?: boolean
+  fiscalApproved?: boolean
 }, ExtArgs["result"]["product"]>
 
 export type ProductSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -763,6 +938,13 @@ export type ProductSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
+  ncm?: boolean
+  cfop?: boolean
+  cest?: boolean
+  fiscalItemType?: boolean
+  serviceCode?: boolean
+  issRate?: boolean
+  fiscalApproved?: boolean
 }, ExtArgs["result"]["product"]>
 
 export type ProductSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -786,6 +968,13 @@ export type ProductSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
+  ncm?: boolean
+  cfop?: boolean
+  cest?: boolean
+  fiscalItemType?: boolean
+  serviceCode?: boolean
+  issRate?: boolean
+  fiscalApproved?: boolean
 }, ExtArgs["result"]["product"]>
 
 export type ProductSelectScalar = {
@@ -809,9 +998,16 @@ export type ProductSelectScalar = {
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
+  ncm?: boolean
+  cfop?: boolean
+  cest?: boolean
+  fiscalItemType?: boolean
+  serviceCode?: boolean
+  issRate?: boolean
+  fiscalApproved?: boolean
 }
 
-export type ProductOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "tenantId" | "name" | "internalCode" | "sku" | "barcode" | "category" | "brand" | "supplier" | "species" | "unit" | "salePrice" | "costPrice" | "bulkSale" | "active" | "minimumStock" | "location" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["product"]>
+export type ProductOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "tenantId" | "name" | "internalCode" | "sku" | "barcode" | "category" | "brand" | "supplier" | "species" | "unit" | "salePrice" | "costPrice" | "bulkSale" | "active" | "minimumStock" | "location" | "createdAt" | "updatedAt" | "deletedAt" | "ncm" | "cfop" | "cest" | "fiscalItemType" | "serviceCode" | "issRate" | "fiscalApproved", ExtArgs["result"]["product"]>
 
 export type $ProductPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Product"
@@ -837,6 +1033,13 @@ export type $ProductPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     createdAt: Date
     updatedAt: Date
     deletedAt: Date | null
+    ncm: string | null
+    cfop: string | null
+    cest: string | null
+    fiscalItemType: string
+    serviceCode: string | null
+    issRate: runtime.Decimal | null
+    fiscalApproved: boolean
   }, ExtArgs["result"]["product"]>
   composites: {}
 }
@@ -1280,6 +1483,13 @@ export interface ProductFieldRefs {
   readonly createdAt: Prisma.FieldRef<"Product", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Product", 'DateTime'>
   readonly deletedAt: Prisma.FieldRef<"Product", 'DateTime'>
+  readonly ncm: Prisma.FieldRef<"Product", 'String'>
+  readonly cfop: Prisma.FieldRef<"Product", 'String'>
+  readonly cest: Prisma.FieldRef<"Product", 'String'>
+  readonly fiscalItemType: Prisma.FieldRef<"Product", 'String'>
+  readonly serviceCode: Prisma.FieldRef<"Product", 'String'>
+  readonly issRate: Prisma.FieldRef<"Product", 'Decimal'>
+  readonly fiscalApproved: Prisma.FieldRef<"Product", 'Boolean'>
 }
     
 
