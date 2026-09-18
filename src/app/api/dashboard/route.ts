@@ -23,7 +23,7 @@ export async function GET(request:Request){
     const topMap=new Map<string,{quantity:number;revenue:number}>();
     for(const item of filteredItems){const current=topMap.get(item.productId)??{quantity:0,revenue:0};current.quantity+=Number(item.quantity);current.revenue+=Number(item.total);topMap.set(item.productId,current)}
     const topProducts=[...topMap].map(([id,value])=>({productId:id,name:products.find(product=>product.id===id)?.name??id,...value})).sort((a,b)=>b.quantity-a.quantity).slice(0,10);
-    const [previous,payments,balances,allProducts,expenses,branches,pets]=await Promise.all([
+    const [previous,payments,balances,allProducts,expenses,branchTotals,pets]=await Promise.all([
       prisma.sale.aggregate({where:{tenantId,branchId,status:"COMPLETED",createdAt:{gte:previousStart,lt:start}},_sum:{total:true}}),
       prisma.salePayment.groupBy({by:["method"],where:{tenantId,saleId:{in:sales.map(sale=>sale.id)}},_sum:{amount:true}}),
       prisma.stockBalance.findMany({where:{tenantId,branchId}}),
@@ -32,6 +32,8 @@ export async function GET(request:Request){
       prisma.sale.groupBy({by:["branchId"],where:{tenantId,branchId:{in:session.user.branchIds},status:"COMPLETED",createdAt:{gte:start,lte:end}},_sum:{total:true},_count:true}),
       prisma.pet.groupBy({by:["type"],where:{tenantId,customerId:{in:sales.flatMap(sale=>sale.customerId?[sale.customerId]:[])}},_count:true}),
     ]);
+    const branchNames=await prisma.branch.findMany({where:{tenantId,id:{in:branchTotals.map(row=>row.branchId)}},select:{id:true,name:true}});
+    const branches=branchTotals.map(row=>({branchId:row.branchId,branchName:branchNames.find(branch=>branch.id===row.branchId)?.name??"Loja removida",_sum:row._sum,_count:row._count}));
     const productMap=new Map(allProducts.map(product=>[product.id,product]));
     const lowStock=balances.filter(balance=>{const product=productMap.get(balance.productId);return product&&balance.quantity.lte(product.minimumStock)}).map(balance=>({productId:balance.productId,name:productMap.get(balance.productId)!.name,quantity:balance.quantity,minimum:productMap.get(balance.productId)!.minimumStock}));
     const previousRevenue=Number(previous._sum.total??0);
