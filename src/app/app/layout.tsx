@@ -1,4 +1,5 @@
 import { AppShell } from "@/components/app-shell";
+import { PwaRegister } from "@/components/pwa-register";
 import { cookies } from "next/headers";
 import { prisma } from "@/lib/prisma";
 import { requireTenantSession } from "@/lib/session";
@@ -13,5 +14,5 @@ export default async function TenantLayout({ children }: { children: React.React
   const enabledModules=resolveEnabledModules(tenant.subscriptions[0]?.plan.enabledModules??[],tenant.moduleOverrides);
   const branchSettings=activeBranchId?await prisma.branchSetting.findFirst({where:{tenantId:session.user.tenantId,branchId:activeBranchId},select:{primaryColor:true}}):null;
   const primaryColor=branchSettings?.primaryColor??settings?.primaryColor??"#176b57";
-  return <div style={{"--brand":primaryColor,"--brand-strong":primaryColor} as React.CSSProperties}><AppShell userName={session.user.name ?? "Usuário"} tenantName={session.user.tenantName} branches={branches} activeBranchId={activeBranchId} enabledModules={enabledModules}>{children}</AppShell></div>;
+  return <div style={{"--brand":primaryColor,"--brand-strong":primaryColor} as React.CSSProperties}><PwaRegister/><AppShell userName={session.user.name ?? "Usuário"} tenantName={session.user.tenantName} branches={branches} activeBranchId={activeBranchId} enabledModules={enabledModules}>{children}</AppShell></div>;
 }
