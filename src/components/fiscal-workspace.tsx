@@ -171,7 +171,7 @@ export function FiscalWorkspace() {
         </div>
 
         <div style={{ display: "grid", gap: 18 }}>
-          <form className="card section-card module-form" onSubmit={submitConfig} key={configuration?.id ?? "new"}>
+          <form className="card section-card module-form" onSubmit={submitConfig} key={configuration?.id ?? "new"} autoComplete="off">
             <h2>Configuração fiscal e certificado</h2>
             <div className="field"><label>Ambiente</label><select className="input" name="environment" defaultValue={configuration?.environment ?? "HOMOLOGATION"}><option value="HOMOLOGATION">Homologação</option><option value="PRODUCTION">Produção</option></select></div>
             <div className="field"><label>Forma de transmissão</label><select className="input" name="providerType" defaultValue={configuration?.providerType ?? "SANDBOX"}><option value="SANDBOX">Simulador de homologação</option><option value="DIRECT_SEFAZ_SP">Transmissão direta SEFAZ-SP</option><option value="NOT_CONFIGURED">Não configurado</option></select></div>
@@ -185,9 +185,9 @@ export function FiscalWorkspace() {
             <div className="field"><label>Município</label><input className="input" name="city" defaultValue={configuration?.city ?? ""} /></div>
             <div className="field"><label>Código do município (IBGE)</label><input className="input" name="cityCode" defaultValue={configuration?.cityCode ?? ""} /></div>
             <div className="field"><label>Estado</label><input className="input" name="state" maxLength={2} defaultValue={configuration?.state ?? ""} /></div>
-            <div className="field"><label>CEP</label><input className="input" name="zipCode" defaultValue={configuration?.zipCode ?? ""} /></div>
+            <div className="field"><label>CEP</label><input className="input" name="zipCode" autoComplete="postal-code" defaultValue={configuration?.zipCode ?? ""} /></div>
             <div className="field"><label>Certificado A1 (.pfx)</label><input className="input" type="file" name="certificateFile" accept=".pfx,.p12" /><small>{configuration?.hasCertificate ? `Certificado atual: ${configuration.certificateUsable ? "válido" : "inválido, envie novamente"}${configuration.certificateExpiresAt ? `, expira em ${new Date(configuration.certificateExpiresAt).toLocaleDateString("pt-BR")}` : ""}` : "Nenhum certificado enviado ainda."}</small></div>
-            <div className="field"><label>Senha do certificado</label><input className="input" type="password" name="certificatePassword" placeholder={configuration?.hasCertificatePassword ? "Mantida (deixe em branco para não alterar)" : ""} /></div>
+            <div className="field"><label>Senha do certificado</label><input className="input" type="password" name="certificatePassword" autoComplete="new-password" placeholder={configuration?.hasCertificatePassword ? "Mantida (deixe em branco para não alterar)" : ""} /></div>
             <label><input type="checkbox" name="enableNfe" defaultChecked={configuration?.enableNfe} /> Habilitar NF-e</label>
             <label><input type="checkbox" name="enableNfce" defaultChecked={configuration?.enableNfce} /> Habilitar NFC-e</label>
             <label><input type="checkbox" name="directTransmissionEnabled" defaultChecked={configuration?.directTransmissionEnabled} /> Liberar conscientemente a transmissão direta em produção</label>
