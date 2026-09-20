@@ -13,6 +13,22 @@
 .status-completed{color:var(--brand-strong);background:var(--brand-tint)}
 .status-cancelled{color:#8d2922;background:#fbe9e7}
 .status-pending{color:var(--warning);background:#fbf3df}
+.mini-calendar-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-top:8px;text-align:center}
+.mini-calendar-grid>span{padding:4px 0;color:var(--muted);font-size:.68rem;font-weight:800;text-transform:uppercase}
+.mini-day{position:relative;height:38px;padding:0;border:1px solid transparent;border-radius:9px;background:transparent;font-size:.82rem;cursor:pointer;transition:border-color .15s ease,background .15s ease}
+.mini-day:hover{border-color:var(--brand);background:var(--brand-tint)}
+.mini-day.active{border-color:var(--brand);background:var(--brand-tint);color:var(--brand-strong);font-weight:800}
+.mini-day-dots{position:absolute;bottom:4px;left:50%;display:flex;gap:2px;transform:translateX(-50%)}
+.mini-day-dots i{width:5px;height:5px;border-radius:50%;background:var(--brand)}
+.mini-day-dots i.danger-dot{background:var(--danger)}
+.slot-free,.slot-busy,.slot-full,.slot-blocked{text-align:center}
+.slot-free button,.slot-busy button{width:100%;padding:8px 6px;border:0;border-radius:8px;background:transparent;font-size:.78rem;cursor:pointer;color:var(--brand-strong)}
+.slot-free button:hover{background:var(--brand-tint)}
+.slot-busy{background:#eaf2fb}
+.slot-busy button{color:#1d5aa8}
+.slot-busy button:hover{background:#dbe9f8}
+.slot-full{background:#eaf2fb;color:#1d5aa8;font-weight:700;font-size:.78rem}
+.slot-blocked{background:#fbe9e7;color:#8d2922;font-weight:700;font-size:.78rem}
 .detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;padding:2px 0 18px;border-top:1px solid var(--line)}
 .detail-grid h4{margin:16px 0 8px;font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
 .detail-grid p{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 8px;padding:9px 11px;border:1px solid var(--line);border-radius:9px;font-size:.82rem}
