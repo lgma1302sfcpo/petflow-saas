@@ -36,6 +36,8 @@ async function main() {
   const platformPassword=await hash(process.env.SEED_SUPERADMIN_PASSWORD??"Dev@123456",12);
   await prisma.platformUser.upsert({where:{username:process.env.SEED_SUPERADMIN_USERNAME??"plataforma"},update:{passwordHash:platformPassword,active:true},create:{name:"Administrador da Plataforma",username:process.env.SEED_SUPERADMIN_USERNAME??"plataforma",passwordHash:platformPassword}});
 
+  if(process.env.SEED_DEMO_TENANT==="false")return;
+
   const tenant=await prisma.tenant.upsert({where:{slug:"pet-demo"},update:{status:"ACTIVE"},create:{name:"Pet & Companhia",slug:"pet-demo",document:"12345678000190",status:"ACTIVE",trialEndsAt:new Date(Date.now()+30*86_400_000),settings:{create:{brandName:"Pet & Companhia",primaryColor:"#176b57",acceptedPaymentMethods:["PIX","DINHEIRO","DEBITO","CREDITO"],requiredCustomerFields:["fullName","phone"],bulkSaleEnabled:true}},subscriptions:{create:{planId:savedPlans[1].id,status:"ACTIVE",currentPeriodEnd:new Date(Date.now()+30*86_400_000)}}}});
   await prisma.tenantSetting.upsert({where:{tenantId:tenant.id},update:{requiredCustomerFields:["fullName","phone"]},create:{tenantId:tenant.id,brandName:"Pet & Companhia",primaryColor:"#176b57",acceptedPaymentMethods:["PIX","DINHEIRO","DEBITO","CREDITO"],requiredCustomerFields:["fullName","phone"],bulkSaleEnabled:true}});
   if(!(await prisma.subscription.findFirst({where:{tenantId:tenant.id}}))) await prisma.subscription.create({data:{tenantId:tenant.id,planId:savedPlans[1].id,status:"ACTIVE"}});
