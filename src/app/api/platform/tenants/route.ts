@@ -65,7 +65,8 @@ export async function POST(request: Request) {
       return created;
     });
     return NextResponse.json({ tenant }, { status: 201 });
-  } catch {
+  } catch (error) {
+    console.error("tenant.create failed", error);
     return NextResponse.json({ error: "Não foi possível criar a empresa. Verifique slug, documento e plano." }, { status: 409 });
   }
 }
