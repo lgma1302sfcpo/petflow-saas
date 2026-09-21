@@ -17,6 +17,9 @@ const nextConfig: NextConfig = {
   // validação XSD, geração de PDF/QR Code): mantidos fora do bundle do webpack/turbopack e
   // resolvidos via require() normal do Node em tempo de execução nas rotas de API.
   serverExternalPackages: ["libxml2-wasm", "node-forge", "xml-crypto", "@xmldom/xmldom", "jspdf", "qrcode"],
+  // O client do Prisma é gerado fora de node_modules (src/generated/prisma), então o
+  // rastreador de arquivos do Next não inclui o binário nativo do query engine por padrão.
+  outputFileTracingIncludes: { "/*": ["./src/generated/prisma/**/*"] },
   async headers(){return [{source:"/:path*",headers:[{key:"X-Content-Type-Options",value:"nosniff"},{key:"X-Frame-Options",value:"DENY"},{key:"Referrer-Policy",value:"strict-origin-when-cross-origin"},{key:"Permissions-Policy",value:"camera=(), microphone=(), geolocation=()"},{key:"Content-Security-Policy",value:"default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"}]}]}
 };
 
