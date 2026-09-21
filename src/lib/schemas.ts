@@ -16,7 +16,7 @@ export const loginSchema = z.object({
 export const tenantSchema = z.object({
   name: z.string().trim().min(2).max(120),
   slug: z.string().trim().min(2).max(60).regex(/^[a-z0-9-]+$/),
-  document: z.string().trim().min(11).max(18).optional(),
+  document: z.preprocess((value) => (value === "" ? undefined : value), z.string().trim().min(11).max(18).optional()),
   planId: z.string().cuid(),
   adminName: z.string().trim().min(2).max(120),
   adminUsername: username,

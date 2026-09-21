@@ -56,7 +56,7 @@ export async function POST(request: Request) {
           name: data.adminName,
           username: data.adminUsername,
           passwordHash,
-          branches: { create: created.branches.map((branch) => ({ tenantId: created.id, branchId: branch.id })) },
+          branches: { create: created.branches.map((branch) => ({ branchId: branch.id })) },
         },
       });
       await tx.auditLog.create({

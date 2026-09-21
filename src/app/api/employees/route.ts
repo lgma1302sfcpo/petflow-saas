@@ -35,7 +35,7 @@ export async function POST(request: Request) {
         name: parsed.data.name,
         username: parsed.data.username,
         passwordHash,
-        branches: { create: branches.map((branch) => ({ tenantId, branchId: branch.id })) },
+        branches: { create: branches.map((branch) => ({ branchId: branch.id })) },
       },
       select: { id: true, name: true, username: true, status: true },
     });
